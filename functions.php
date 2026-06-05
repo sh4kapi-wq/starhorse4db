@@ -1,4 +1,5 @@
 <?php
+/* SH4 generated 20260605-044444 - remaining weeks sync */
 add_action('wp_enqueue_scripts', function() {
 
   wp_enqueue_style(
@@ -643,7 +644,13 @@ add_action('template_redirect', function(){
     update_field('odds', $odds, $post_id);
     update_field('limit_odds', $limit_odds, $post_id);
     update_field('race_remaining_weeks', $race_remaining_weeks, $post_id);
+    update_post_meta($post_id, 'race_remaining_weeks', $race_remaining_weeks);
     update_field('race_memo', $race_memo, $post_id);
+
+    if ($race_remaining_weeks !== '') {
+      update_field('manual_remaining_weeks', $race_remaining_weeks, $horse_id);
+      update_post_meta($horse_id, 'manual_remaining_weeks', $race_remaining_weeks);
+    }
 
     sh4_update_total_prize($horse_id);
 
@@ -713,7 +720,13 @@ add_action('template_redirect', function(){
   update_field('odds', $odds, $result_id);
   update_field('limit_odds', $limit_odds, $result_id);
   update_field('race_remaining_weeks', $race_remaining_weeks, $result_id);
+  update_post_meta($result_id, 'race_remaining_weeks', $race_remaining_weeks);
   update_field('race_memo', $race_memo, $result_id);
+
+  if ($race_remaining_weeks !== '') {
+    update_field('manual_remaining_weeks', $race_remaining_weeks, $horse_id);
+    update_post_meta($horse_id, 'manual_remaining_weeks', $race_remaining_weeks);
+  }
 
   sh4_update_total_prize($horse_id);
   clean_post_cache($horse_id);
@@ -818,7 +831,13 @@ add_action('template_redirect', function(){
     update_field('feed_result', $feed_result, $post_id);
     update_field('training_partner_count', $training_partner_count, $post_id);
     update_field('training_remaining_weeks', $training_remaining_weeks, $post_id);
+    update_post_meta($post_id, 'training_remaining_weeks', $training_remaining_weeks);
     update_field('training_memo', $training_memo, $post_id);
+
+    if ($training_remaining_weeks !== '') {
+      update_field('manual_remaining_weeks', $training_remaining_weeks, $horse_id);
+      update_post_meta($horse_id, 'manual_remaining_weeks', $training_remaining_weeks);
+    }
     update_field('training_aptitude_up', $training_aptitude_up, $post_id);
     update_field('training_aptitude_up_items', $training_aptitude_up_items_text, $post_id);
     update_field('training_aptitude_up_memo', $training_aptitude_up_memo, $post_id);
