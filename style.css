@@ -1,0 +1,2483 @@
+/*
+Theme Name: Lightning Child
+Template: lightning
+SH4 generated 20260603-060755
+*/
+
+/* =========================
+  共通
+========================= */
+
+body {
+  padding-bottom:70px; /* 下部固定ボタンに隠れないように */
+}
+
+a {
+  text-decoration:none;
+}
+
+/* =========================
+  馬一覧
+========================= */
+
+.horse-list {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:15px;
+  margin-top:20px;
+}
+
+.horse-card {
+  border:1px solid #ddd;
+  padding:15px;
+  border-radius:10px;
+  background:#fff;
+  text-align:center;
+  transition:0.2s;
+}
+
+.horse-card:hover {
+  background:#f5f5f5;
+}
+
+/* =========================
+  上部ナビ
+========================= */
+
+.global-nav-links {
+  display:flex;
+  gap:10px;
+  padding:10px;
+  background:#f5f5f5;
+  justify-content:center;
+}
+
+.global-nav-links a {
+  display:inline-block;
+  padding:8px 12px;
+  background:#333;
+  color:#fff;
+  border-radius:5px;
+  font-size:14px;
+}
+
+.global-nav-links a:hover {
+  background:#555;
+}
+
+/* =========================
+  下部固定ナビ
+========================= */
+
+.global-bottom-links {
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#fff;
+  border-top:1px solid #ddd;
+  padding:10px;
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  z-index:999;
+}
+
+.global-bottom-links a {
+  display:inline-block;
+  padding:10px 15px;
+  background:#333;
+  color:#fff;
+  border-radius:6px;
+  font-size:14px;
+}
+
+/* =========================
+  馬プロフィールカード
+========================= */
+
+.horse-profile-card{
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:16px;
+  padding:18px;
+  margin:20px 0;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.horse-profile-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:12px;
+}
+
+.horse-profile-row-3{
+  grid-template-columns:repeat(3,1fr);
+}
+
+.horse-traits{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:12px;
+}
+
+.profile-item,
+.trait-box,
+.horse-memo-box{
+  background:#f8f8f8;
+  border-radius:12px;
+  padding:12px;
+}
+
+.profile-label{
+  display:block;
+  font-size:12px;
+  color:#777;
+  margin-bottom:5px;
+}
+
+.profile-value,
+.trait-value{
+  display:block;
+  font-size:16px;
+  font-weight:bold;
+  color:#222;
+}
+
+.memo-content{
+  font-size:15px;
+  line-height:1.8;
+  color:#333;
+  white-space:pre-wrap;
+}
+
+/* =========================
+  戦績サマリー
+========================= */
+
+.horse-summary{
+  margin:15px 0 25px;
+  padding:15px;
+  background:#f7f7f7;
+  border-radius:12px;
+}
+
+.horse-total-record{
+  font-size:22px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.horse-prize{
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.horse-record{
+  font-size:16px;
+  line-height:1.8;
+}
+
+.horse-record-table-wrap{
+  overflow-x:auto;
+  margin-top:15px;
+}
+
+.horse-record-table{
+  width:100%;
+  border-collapse:collapse;
+  background:#fff;
+}
+
+.horse-record-table th,
+.horse-record-table td{
+  border:1px solid #ddd;
+  padding:10px;
+  text-align:center;
+}
+
+.horse-record-table th{
+  background:#f0f0f0;
+  font-weight:bold;
+}
+
+/* =========================
+  出走履歴・調教履歴テーブル
+========================= */
+
+.table-wrap{
+  overflow-x:auto;
+}
+
+.result-table{
+  width:100%;
+  border-collapse:collapse;
+  background:#fff;
+}
+
+.result-table th,
+.result-table td{
+  border:1px solid #ddd;
+  padding:10px;
+  text-align:center;
+}
+
+.result-table th{
+  background:#333;
+  color:#fff;
+}
+
+/* =========================
+  タブ
+========================= */
+
+.history-main-tabs,
+.history-action-tabs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:20px 0 12px;
+}
+
+.history-action-tabs{
+  margin-top:30px;
+  padding-top:18px;
+  border-top:1px solid #ddd;
+}
+
+.history-main-tabs button,
+.history-action-tabs button,
+#race-tabs button{
+  appearance:none;
+  border:1px solid #ccc;
+  background:#fff;
+  color:#333;
+  padding:9px 13px;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:bold;
+  line-height:1.2;
+  transition:0.2s;
+}
+
+.history-main-tabs button:hover,
+.history-action-tabs button:hover,
+#race-tabs button:hover{
+  background:#f0f0f0;
+}
+
+.history-main-tabs button.active,
+.history-action-tabs button.active,
+#race-tabs button.active{
+  background:#333;
+  color:#fff;
+  border-color:#333;
+}
+
+.tab-panel{
+  margin-top:12px;
+}
+
+/* レースグレードタブ */
+#race-tabs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:10px 0 14px;
+}
+
+/* =========================
+  入力フォーム
+========================= */
+
+.result-form,
+.training-form,
+.horse-edit-form{
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:15px;
+  margin-bottom:20px;
+}
+
+.result-form p,
+.training-form p,
+.horse-edit-form p{
+  margin-bottom:14px;
+}
+
+.result-form input,
+.result-form select,
+.training-form input,
+.training-form textarea,
+.horse-edit-form input,
+.horse-edit-form select,
+.horse-edit-form textarea{
+  width:100%;
+  max-width:420px;
+  padding:9px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:15px;
+  box-sizing:border-box;
+}
+
+.result-form textarea,
+.training-form textarea,
+.horse-edit-form textarea{
+  max-width:100%;
+}
+
+/* =========================
+  ボタン
+========================= */
+
+.back-btn,
+.add-btn{
+  display:inline-block;
+  padding:10px 15px;
+  background:#333;
+  color:#fff;
+  border-radius:6px;
+  border:none;
+  cursor:pointer;
+}
+
+.add-btn{
+  background:#28a745;
+}
+
+.add-btn:hover{
+  background:#218838;
+  color:#fff;
+}
+
+.back-btn:hover{
+  background:#555;
+  color:#fff;
+}
+
+.delete-btn,
+.delete-horse-btn{
+  background:#c00;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.delete-btn{
+  padding:6px 12px;
+  font-size:14px;
+}
+
+.delete-horse-btn{
+  margin-top:20px;
+  padding:12px 20px;
+  font-size:16px;
+}
+
+.delete-btn:hover,
+.delete-horse-btn:hover{
+  background:#900;
+}
+
+/* =========================
+  スマホ対応
+========================= */
+
+@media screen and (max-width:768px){
+
+  .global-nav-links {
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .global-nav-links a {
+    width:90%;
+    text-align:center;
+  }
+
+  .global-bottom-links {
+    flex-direction:row;
+  }
+
+  .global-bottom-links a {
+    width:45%;
+    text-align:center;
+  }
+
+  .horse-profile-row,
+  .horse-traits{
+    grid-template-columns:1fr;
+  }
+
+  .horse-profile-row-3{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .horse-profile-row-3 .profile-item{
+    padding:8px;
+  }
+
+  .horse-profile-row-3 .profile-value{
+    font-size:14px;
+  }
+
+  .history-main-tabs,
+  .history-action-tabs,
+  #race-tabs{
+    gap:6px;
+  }
+
+  .history-main-tabs button,
+  .history-action-tabs button,
+  #race-tabs button{
+    font-size:13px;
+    padding:8px 10px;
+  }
+
+  .result-table thead{
+    display:none !important;
+  }
+
+  .result-table tr{
+    display:block !important;
+    margin-bottom:15px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:10px;
+    background:#fff;
+  }
+
+  .result-table td{
+    display:flex !important;
+    justify-content:space-between;
+    gap:15px;
+    padding:6px 0;
+    border:none;
+    text-align:right;
+  }
+
+  .result-table td::before{
+    content:attr(data-label);
+    font-weight:bold;
+    color:#555;
+    text-align:left;
+  }
+
+  .result-form input,
+  .result-form select,
+  .training-form input,
+  .training-form textarea,
+  .horse-edit-form input,
+  .horse-edit-form select,
+  .horse-edit-form textarea{
+    max-width:100%;
+  }
+
+}
+
+/* =========================
+  基本情報・適性タブ
+========================= */
+
+.horse-info-tabs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:18px 0 12px;
+}
+
+.horse-info-tabs button{
+  appearance:none;
+  border:1px solid #ccc;
+  background:#fff;
+  color:#333;
+  padding:9px 16px;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:bold;
+  line-height:1.2;
+  transition:0.2s;
+}
+
+.horse-info-tabs button:hover{
+  background:#f0f0f0;
+}
+
+.horse-info-tabs button.active{
+  background:#333;
+  color:#fff;
+  border-color:#333;
+}
+
+.aptitude-title{
+  margin-top:0;
+  margin-bottom:14px;
+  font-size:20px;
+}
+
+.aptitude-table-wrap{
+  overflow-x:auto;
+}
+
+.aptitude-table{
+  width:100%;
+  border-collapse:collapse;
+  background:#fff;
+}
+
+.aptitude-table th,
+.aptitude-table td{
+  border:1px solid #ddd;
+  padding:10px;
+  text-align:center;
+}
+
+.aptitude-table thead th{
+  background:#333;
+  color:#fff;
+}
+
+.aptitude-table tbody th{
+  background:#f5f5f5;
+  font-weight:bold;
+  width:34%;
+}
+
+.aptitude-table td{
+  font-size:16px;
+  font-weight:bold;
+}
+
+@media screen and (max-width:768px){
+
+  .horse-info-tabs{
+    gap:6px;
+  }
+
+  .horse-info-tabs button{
+    font-size:13px;
+    padding:8px 12px;
+  }
+
+  .aptitude-table th,
+  .aptitude-table td{
+    padding:8px;
+    font-size:14px;
+  }
+
+}
+
+/* =========================
+  適性編集
+========================= */
+
+.aptitude-edit-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:15px;
+}
+
+@media screen and (max-width:768px){
+
+  .aptitude-edit-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+/* =========================
+  調教履歴
+========================= */
+
+.training-history-table td{
+  vertical-align:middle;
+}
+
+#training_type_other_wrap{
+  margin-top:-6px;
+}
+
+/* =========================
+  調教：適性上昇
+========================= */
+
+.training-aptitude-up-box{
+  background:#f8f8f8;
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:12px;
+  margin:14px 0;
+}
+
+.training-aptitude-up-toggle{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.training-aptitude-up-toggle input{
+  width:auto !important;
+  max-width:none !important;
+}
+
+.training-aptitude-up-items{
+  margin-top:12px;
+}
+
+.training-aptitude-checkbox-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px 12px;
+}
+
+.training-aptitude-checkbox-grid label{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:8px;
+  padding:8px;
+  cursor:pointer;
+}
+
+.training-aptitude-checkbox-grid input{
+  width:auto !important;
+  max-width:none !important;
+}
+
+@media screen and (max-width:768px){
+
+  .training-aptitude-checkbox-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+
+/* =========================
+  調教履歴：コンパクト表
+========================= */
+
+.training-history-table{
+  min-width:760px;
+  table-layout:auto;
+}
+
+.training-history-table th,
+.training-history-table td{
+  padding:7px 6px;
+  font-size:13px;
+  white-space:nowrap;
+}
+
+.training-history-table .training-col-name,
+.training-history-table .training-col-feed,
+.training-history-table .training-col-aptitude,
+.training-history-table .training-col-memo{
+  white-space:normal;
+  min-width:90px;
+}
+
+.training-history-table .training-col-partner,
+.training-history-table .training-col-result,
+.training-history-table .training-col-week{
+  width:58px;
+}
+
+@media screen and (max-width:768px){
+
+  .table-wrap:has(.training-history-table){
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .training-history-table{
+    min-width:720px;
+  }
+
+  .training-history-table thead{
+    display:table-header-group !important;
+  }
+
+  .training-history-table tr{
+    display:table-row !important;
+    margin-bottom:0 !important;
+    border:none !important;
+    border-radius:0 !important;
+    padding:0 !important;
+    background:#fff;
+  }
+
+  .training-history-table th,
+  .training-history-table td{
+    display:table-cell !important;
+    border:1px solid #ddd !important;
+    padding:6px 5px !important;
+    text-align:center !important;
+    vertical-align:middle;
+    font-size:12px;
+    gap:0;
+  }
+
+  .training-history-table td::before{
+    content:none !important;
+  }
+
+  .training-history-table .training-col-name,
+  .training-history-table .training-col-feed,
+  .training-history-table .training-col-aptitude,
+  .training-history-table .training-col-memo{
+    text-align:left !important;
+    white-space:normal;
+  }
+
+}
+
+
+/* =========================
+  調教履歴：スマホ表崩れ修正版
+  ※ result-table のスマホカード化を受けない専用テーブル
+========================= */
+
+.training-table-wrap{
+  width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+
+.sh4-training-table{
+  width:100%;
+  min-width:760px;
+  border-collapse:collapse;
+  background:#fff;
+  table-layout:auto;
+}
+
+.sh4-training-table th,
+.sh4-training-table td{
+  border:1px solid #ddd;
+  padding:7px 6px;
+  font-size:13px;
+  text-align:center;
+  vertical-align:middle;
+  white-space:nowrap;
+}
+
+.sh4-training-table th{
+  background:#333;
+  color:#fff;
+  font-weight:bold;
+}
+
+.sh4-training-table .training-col-name,
+.sh4-training-table .training-col-feed,
+.sh4-training-table .training-col-aptitude,
+.sh4-training-table .training-col-memo{
+  white-space:normal;
+  text-align:left;
+  min-width:90px;
+}
+
+.sh4-training-table .training-col-partner,
+.sh4-training-table .training-col-result,
+.sh4-training-table .training-col-week{
+  width:58px;
+}
+
+@media screen and (max-width:768px){
+
+  .training-table-wrap{
+    overflow-x:auto !important;
+    overflow-y:hidden;
+  }
+
+  .sh4-training-table{
+    display:table !important;
+    min-width:720px !important;
+    width:720px !important;
+    border-collapse:collapse !important;
+  }
+
+  .sh4-training-table thead{
+    display:table-header-group !important;
+  }
+
+  .sh4-training-table tbody{
+    display:table-row-group !important;
+  }
+
+  .sh4-training-table tr{
+    display:table-row !important;
+    margin:0 !important;
+    border:none !important;
+    border-radius:0 !important;
+    padding:0 !important;
+    background:#fff !important;
+  }
+
+  .sh4-training-table th,
+  .sh4-training-table td{
+    display:table-cell !important;
+    border:1px solid #ddd !important;
+    padding:6px 5px !important;
+    text-align:center !important;
+    vertical-align:middle !important;
+    font-size:12px !important;
+    line-height:1.35 !important;
+    white-space:nowrap !important;
+  }
+
+  .sh4-training-table td::before{
+    content:none !important;
+    display:none !important;
+  }
+
+  .sh4-training-table .training-col-name,
+  .sh4-training-table .training-col-feed,
+  .sh4-training-table .training-col-aptitude,
+  .sh4-training-table .training-col-memo{
+    text-align:left !important;
+    white-space:normal !important;
+  }
+
+}
+
+/* =========================
+  出走履歴：スマホ表形式
+========================= */
+
+.race-table-wrap{
+  width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+
+.sh4-race-table{
+  width:100%;
+  min-width:760px;
+  border-collapse:collapse;
+  background:#fff;
+  table-layout:auto;
+}
+
+.sh4-race-table th,
+.sh4-race-table td{
+  border:1px solid #ddd;
+  padding:7px 6px;
+  font-size:13px;
+  text-align:center;
+  vertical-align:middle;
+  white-space:nowrap;
+}
+
+.sh4-race-table th{
+  background:#333;
+  color:#fff;
+  font-weight:bold;
+}
+
+.sh4-race-table .race-col-name,
+.sh4-race-table .race-col-memo{
+  white-space:normal;
+  text-align:left;
+  min-width:110px;
+}
+
+.sh4-race-table .race-col-rank,
+.sh4-race-table .race-col-popularity,
+.sh4-race-table .race-col-week{
+  width:46px;
+}
+
+.sh4-race-table .race-col-odds,
+.sh4-race-table .race-col-limit{
+  width:62px;
+}
+
+.sh4-race-table .race-col-prize{
+  width:78px;
+}
+
+.sh4-race-table .race-col-delete{
+  width:64px;
+}
+
+@media screen and (max-width:768px){
+
+  .race-table-wrap{
+    overflow-x:auto !important;
+    overflow-y:hidden;
+  }
+
+  .sh4-race-table{
+    display:table !important;
+    min-width:760px !important;
+    width:760px !important;
+    border-collapse:collapse !important;
+  }
+
+  .sh4-race-table thead{
+    display:table-header-group !important;
+  }
+
+  .sh4-race-table tbody{
+    display:table-row-group !important;
+  }
+
+  .sh4-race-table tr{
+    display:table-row !important;
+    margin:0 !important;
+    border:none !important;
+    border-radius:0 !important;
+    padding:0 !important;
+    background:#fff !important;
+  }
+
+  .sh4-race-table th,
+  .sh4-race-table td{
+    display:table-cell !important;
+    border:1px solid #ddd !important;
+    padding:6px 5px !important;
+    text-align:center !important;
+    vertical-align:middle !important;
+    font-size:12px !important;
+    line-height:1.35 !important;
+    white-space:nowrap !important;
+  }
+
+  .sh4-race-table td::before{
+    content:none !important;
+    display:none !important;
+  }
+
+  .sh4-race-table .race-col-name,
+  .sh4-race-table .race-col-memo{
+    text-align:left !important;
+    white-space:normal !important;
+  }
+
+}
+
+
+/* 初期レース行 */
+.initial-race-row td{
+  background:#fafafa;
+}
+
+
+/* =========================
+  出走履歴：スマホ表表示 強制修正版
+  - result-table のカード化を受けない
+  - iPhoneで項目名が縦書き状に折れないよう列幅を固定
+========================= */
+
+.race-table-wrap{
+  width:100% !important;
+  max-width:100% !important;
+  overflow-x:auto !important;
+  overflow-y:hidden !important;
+  -webkit-overflow-scrolling:touch !important;
+}
+
+.race-table-wrap .sh4-race-table,
+.sh4-race-table.race-history-table{
+  display:table !important;
+  width:880px !important;
+  min-width:880px !important;
+  max-width:none !important;
+  table-layout:fixed !important;
+  border-collapse:collapse !important;
+  background:#fff !important;
+}
+
+.sh4-race-table thead{
+  display:table-header-group !important;
+}
+
+.sh4-race-table tbody{
+  display:table-row-group !important;
+}
+
+.sh4-race-table tr{
+  display:table-row !important;
+  margin:0 !important;
+  padding:0 !important;
+  border:none !important;
+  border-radius:0 !important;
+  background:#fff !important;
+}
+
+.sh4-race-table th,
+.sh4-race-table td{
+  display:table-cell !important;
+  box-sizing:border-box !important;
+  border:1px solid #ddd !important;
+  padding:6px 5px !important;
+  text-align:center !important;
+  vertical-align:middle !important;
+  font-size:12px !important;
+  line-height:1.35 !important;
+  word-break:keep-all !important;
+  overflow-wrap:normal !important;
+  white-space:nowrap !important;
+}
+
+.sh4-race-table th{
+  background:#333 !important;
+  color:#fff !important;
+  font-weight:bold !important;
+}
+
+.sh4-race-table td::before{
+  content:none !important;
+  display:none !important;
+}
+
+.sh4-race-table .race-col-name{
+  width:118px !important;
+  min-width:118px !important;
+  white-space:normal !important;
+  word-break:keep-all !important;
+  overflow-wrap:break-word !important;
+  text-align:left !important;
+}
+
+.sh4-race-table .race-col-rank{
+  width:46px !important;
+  min-width:46px !important;
+}
+
+.sh4-race-table .race-col-popularity{
+  width:40px !important;
+  min-width:40px !important;
+}
+
+.sh4-race-table .race-col-odds,
+.sh4-race-table .race-col-limit{
+  width:62px !important;
+  min-width:62px !important;
+}
+
+.sh4-race-table .race-col-prize{
+  width:82px !important;
+  min-width:82px !important;
+}
+
+.sh4-race-table .race-col-week{
+  width:54px !important;
+  min-width:54px !important;
+}
+
+.sh4-race-table .race-col-memo{
+  width:180px !important;
+  min-width:180px !important;
+  white-space:normal !important;
+  word-break:keep-all !important;
+  overflow-wrap:break-word !important;
+  text-align:left !important;
+}
+
+.sh4-race-table .race-col-delete{
+  width:72px !important;
+  min-width:72px !important;
+}
+
+@media screen and (max-width:768px){
+  .race-table-wrap{
+    margin-left:0 !important;
+    margin-right:0 !important;
+  }
+
+  .race-table-wrap .sh4-race-table,
+  .sh4-race-table.race-history-table{
+    width:880px !important;
+    min-width:880px !important;
+  }
+
+  .sh4-race-table th,
+  .sh4-race-table td{
+    font-size:11px !important;
+    padding:5px 4px !important;
+  }
+}
+
+
+/* =========================
+  出走履歴テーブル 幅調整・メモ省略
+========================= */
+
+.race-table-wrap .sh4-race-table,
+.sh4-race-table.race-history-table{
+  width:650px !important;
+  min-width:650px !important;
+  table-layout:fixed !important;
+}
+
+.sh4-race-table .race-col-name{
+  width:96px !important;
+  min-width:96px !important;
+  max-width:96px !important;
+}
+
+.sh4-race-table .race-col-rank{
+  width:36px !important;
+  min-width:36px !important;
+  max-width:36px !important;
+}
+
+.sh4-race-table .race-col-popularity{
+  width:34px !important;
+  min-width:34px !important;
+  max-width:34px !important;
+}
+
+.sh4-race-table .race-col-odds,
+.sh4-race-table .race-col-limit{
+  width:52px !important;
+  min-width:52px !important;
+  max-width:52px !important;
+}
+
+.sh4-race-table .race-col-prize{
+  width:76px !important;
+  min-width:76px !important;
+  max-width:76px !important;
+}
+
+.sh4-race-table .race-col-week{
+  width:46px !important;
+  min-width:46px !important;
+  max-width:46px !important;
+}
+
+.sh4-race-table .race-col-memo{
+  width:150px !important;
+  min-width:150px !important;
+  max-width:150px !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+  word-break:normal !important;
+  overflow-wrap:normal !important;
+  text-align:left !important;
+}
+
+.sh4-race-table .race-col-delete{
+  width:52px !important;
+  min-width:52px !important;
+  max-width:52px !important;
+}
+
+@media screen and (max-width:768px){
+  .race-table-wrap .sh4-race-table,
+  .sh4-race-table.race-history-table{
+    width:650px !important;
+    min-width:650px !important;
+  }
+
+  .sh4-race-table th,
+  .sh4-race-table td{
+    font-size:11px !important;
+    padding:5px 3px !important;
+  }
+}
+
+/* =========================
+  馬情報編集内タブ
+========================= */
+
+.horse-edit-inner-tabs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:0 0 16px;
+  padding:8px;
+  background:#f5f5f5;
+  border-radius:12px;
+}
+
+.horse-edit-inner-tabs button{
+  appearance:none;
+  border:1px solid #ccc;
+  background:#fff;
+  color:#333;
+  padding:9px 14px;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:bold;
+  line-height:1.2;
+  transition:0.2s;
+}
+
+.horse-edit-inner-tabs button:hover{
+  background:#eee;
+}
+
+.horse-edit-inner-tabs button.active{
+  background:#333;
+  color:#fff;
+  border-color:#333;
+}
+
+.horse-edit-inner-panel{
+  margin-top:12px;
+}
+
+.initial-race-edit-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-bottom:10px;
+}
+
+.form-help-text{
+  display:block;
+  margin-top:5px;
+  font-size:12px;
+  color:#777;
+  line-height:1.5;
+}
+
+.breaking-edit-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin:12px 0 18px;
+}
+
+.breaking-check-item{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  background:#f8f8f8;
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:9px;
+  font-size:14px;
+}
+
+.breaking-check-item input{
+  width:auto !important;
+  max-width:none !important;
+}
+
+@media screen and (max-width:768px){
+
+  .horse-edit-inner-tabs{
+    gap:6px;
+    padding:6px;
+  }
+
+  .horse-edit-inner-tabs button{
+    font-size:13px;
+    padding:8px 12px;
+  }
+
+  .initial-race-edit-grid,
+  .breaking-edit-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+/* =========================
+  ユーザー権限メッセージ
+========================= */
+
+.owner-only-notice{
+  margin:24px 0;
+  padding:16px;
+  background:#fff7e6;
+  border:1px solid #ffd591;
+  border-radius:12px;
+  color:#333;
+}
+
+.owner-only-notice p{
+  margin:0 0 10px;
+}
+
+.owner-only-notice p:last-child{
+  margin-bottom:0;
+}
+
+.login-btn{
+  display:inline-block;
+  padding:10px 15px;
+  background:#333;
+  color:#fff;
+  border-radius:6px;
+  font-weight:bold;
+}
+
+.login-btn:hover{
+  background:#555;
+  color:#fff;
+}
+
+
+/* =========================
+  厩舎名表示
+========================= */
+
+.horse-owner{
+  margin:8px 0 0;
+  font-size:13px;
+  color:#666;
+}
+
+.horse-owner-profile{
+  margin-bottom:12px;
+}
+
+/* =========================
+  マイページ
+========================= */
+
+.sh4-mypage-wrap{
+  max-width:720px;
+  margin:0 auto 40px;
+}
+
+.sh4-mypage-card{
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:16px;
+  padding:18px;
+  margin:18px 0;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.sh4-mypage-card h2{
+  margin-top:0;
+  font-size:20px;
+}
+
+.sh4-mypage-help{
+  color:#555;
+  line-height:1.8;
+}
+
+.sh4-stable-form input[type="text"]{
+  width:100%;
+  max-width:420px;
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:16px;
+  box-sizing:border-box;
+}
+
+.sh4-current-stable-name{
+  padding:10px 12px;
+  background:#f8f8f8;
+  border-radius:10px;
+}
+
+.sh4-success-message{
+  margin:15px 0;
+  padding:12px 14px;
+  background:#e9f8ee;
+  border:1px solid #9ad3aa;
+  border-radius:10px;
+  color:#135c28;
+  font-weight:bold;
+}
+
+.sh4-mypage-links{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.sh4-mypage-links a{
+  display:inline-block;
+  padding:10px 14px;
+  background:#333;
+  color:#fff;
+  border-radius:8px;
+  font-weight:bold;
+}
+
+.sh4-mypage-links a:hover{
+  background:#555;
+  color:#fff;
+}
+
+@media screen and (max-width:768px){
+
+  .global-bottom-links{
+    gap:4px;
+    padding:6px 4px;
+  }
+
+  .global-bottom-links a{
+    flex:1;
+    width:auto;
+    padding:7px 3px;
+    font-size:11px;
+    text-align:center;
+    white-space:nowrap;
+  }
+
+}
+
+/* =========================
+  マイページ：自分の馬一覧
+========================= */
+
+.sh4-my-horse-list{
+  margin-top:15px;
+}
+
+.sh4-mypage-add-horse{
+  margin-top:18px;
+  text-align:right;
+}
+
+@media screen and (max-width:768px){
+
+  .global-bottom-links{
+    gap:6px;
+    padding:8px 6px;
+  }
+
+  .global-bottom-links a{
+    flex:1;
+    width:auto;
+    padding:9px 6px;
+    font-size:12px;
+    text-align:center;
+  }
+
+}
+
+
+/* =========================
+  独自ログインページ
+========================= */
+
+.sh4-login-wrap{
+  max-width:520px;
+  margin:30px auto 50px;
+}
+
+.sh4-login-card{
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:16px;
+  padding:24px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.sh4-login-card h1{
+  margin-top:0;
+  margin-bottom:10px;
+}
+
+.sh4-login-lead{
+  color:#555;
+  line-height:1.8;
+}
+
+.sh4-login-error{
+  margin:15px 0;
+  padding:12px 14px;
+  background:#fff1f0;
+  border:1px solid #ffccc7;
+  border-radius:10px;
+  color:#a8071a;
+  font-weight:bold;
+}
+
+.sh4-google-login-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  width:100%;
+  padding:12px 14px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  background:#fff;
+  color:#222;
+  font-weight:bold;
+  box-sizing:border-box;
+}
+
+.sh4-google-login-btn:hover{
+  background:#f5f5f5;
+  color:#222;
+}
+
+.sh4-google-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  background:#fff;
+  color:#4285f4;
+  font-weight:bold;
+  font-size:20px;
+}
+
+.sh4-login-divider{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:22px 0;
+  color:#777;
+  font-size:13px;
+}
+
+.sh4-login-divider::before,
+.sh4-login-divider::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:#ddd;
+}
+
+.sh4-login-form label{
+  font-weight:bold;
+  color:#333;
+}
+
+.sh4-login-form input[type="text"],
+.sh4-login-form input[type="password"]{
+  width:100%;
+  padding:11px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:16px;
+  box-sizing:border-box;
+}
+
+.sh4-login-remember{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin:12px 0;
+  font-weight:normal !important;
+}
+
+.sh4-login-submit{
+  width:100%;
+  padding:12px 14px;
+  font-size:16px;
+}
+
+.sh4-login-links{
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:18px;
+  font-size:14px;
+}
+
+@media screen and (max-width:768px){
+
+  .sh4-login-wrap{
+    margin:18px auto 40px;
+  }
+
+  .sh4-login-card{
+    padding:18px;
+  }
+
+}
+
+/* =========================
+  残り週・加算週 直接編集
+========================= */
+.week-edit-btn{
+  appearance:none;
+  border:1px solid #ddd;
+  background:#fff;
+  color:#333;
+  border-radius:999px;
+  width:28px;
+  height:28px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  font-size:14px;
+  line-height:1;
+  margin:0 4px;
+  padding:0;
+}
+
+.week-edit-btn:hover{
+  background:#f0f0f0;
+}
+
+.week-edit-panel{
+  margin-top:12px;
+  padding:12px;
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:12px;
+}
+
+.week-edit-form{
+  display:flex;
+  align-items:flex-end;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.week-edit-form label{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  font-size:13px;
+  font-weight:bold;
+  color:#555;
+}
+
+.week-edit-form input[type="number"]{
+  width:100px;
+  padding:8px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:15px;
+  box-sizing:border-box;
+}
+
+.week-save-btn,
+.week-cancel-btn{
+  appearance:none;
+  border:none;
+  border-radius:8px;
+  padding:9px 12px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.week-save-btn{
+  background:#28a745;
+  color:#fff;
+}
+
+.week-cancel-btn{
+  background:#eee;
+  color:#333;
+}
+
+@media screen and (max-width:768px){
+
+  .remaining-weeks-main{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:3px;
+  }
+
+  .week-edit-btn{
+    width:24px;
+    height:24px;
+    font-size:12px;
+    margin:0 2px;
+  }
+
+  .week-edit-form{
+    gap:8px;
+  }
+
+  .week-edit-form input[type="number"]{
+    width:86px;
+    padding:7px;
+  }
+
+}
+
+
+/* =========================
+  履歴メモ：全文表示
+========================= */
+
+.sh4-memo-preview{
+  display:inline-block;
+  max-width:100%;
+  vertical-align:middle;
+}
+
+.sh4-memo-toggle,
+.sh4-memo-close{
+  appearance:none;
+  border:none;
+  background:#333;
+  color:#fff;
+  border-radius:999px;
+  padding:3px 8px;
+  margin-left:6px;
+  font-size:11px;
+  line-height:1.4;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+.sh4-memo-toggle:hover,
+.sh4-memo-close:hover{
+  background:#555;
+}
+
+.sh4-memo-detail-row{
+  display:none !important;
+  background:#fff !important;
+}
+
+.sh4-memo-detail-row.is-open{
+  display:table-row !important;
+}
+
+.sh4-memo-detail-cell{
+  text-align:left !important;
+  white-space:normal !important;
+  padding:8px !important;
+  background:#fafafa !important;
+}
+
+.sh4-memo-detail-box{
+  border:1px solid #ddd;
+  border-radius:10px;
+  background:#fff;
+  padding:10px;
+  text-align:left;
+}
+
+.sh4-memo-detail-title{
+  font-size:12px;
+  font-weight:bold;
+  color:#555;
+  margin-bottom:6px;
+}
+
+.sh4-memo-detail-text{
+  font-size:13px;
+  line-height:1.7;
+  color:#333;
+  white-space:pre-wrap;
+  word-break:break-word;
+}
+
+.sh4-memo-close{
+  margin:8px 0 0;
+}
+
+@media screen and (max-width:768px){
+
+  .sh4-memo-toggle,
+  .sh4-memo-close{
+    padding:2px 7px;
+    font-size:10px;
+  }
+
+  .sh4-memo-detail-text{
+    font-size:12px;
+  }
+
+}
+
+
+/* =========================
+  履歴メモ：スマホ省略＋表示ボタン修正
+========================= */
+
+.sh4-race-table .race-col-memo,
+.sh4-training-table .training-col-memo{
+  white-space:nowrap !important;
+  overflow:hidden !important;
+}
+
+.sh4-memo-inline{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  width:100%;
+  min-width:0;
+}
+
+.sh4-memo-inline .sh4-memo-preview{
+  flex:1 1 auto;
+  min-width:0;
+  display:block;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.sh4-memo-inline .sh4-memo-toggle{
+  flex:0 0 auto;
+  width:22px;
+  height:22px;
+  padding:0;
+  margin-left:0;
+  border-radius:50%;
+  font-size:13px;
+  font-weight:bold;
+  line-height:22px;
+  text-align:center;
+}
+
+@media screen and (max-width:768px){
+
+  .sh4-memo-inline{
+    gap:3px;
+  }
+
+  .sh4-memo-inline .sh4-memo-toggle{
+    width:20px;
+    height:20px;
+    font-size:12px;
+    line-height:20px;
+  }
+
+}
+
+/* =========================
+  履歴メモ：iPhone 展開行 非表示優先修正
+  ※ スマホ用テーブル強制表示より強く指定
+========================= */
+
+.sh4-race-table tr.sh4-memo-detail-row,
+.sh4-training-table tr.sh4-memo-detail-row{
+  display:none !important;
+}
+
+.sh4-race-table tr.sh4-memo-detail-row.is-open,
+.sh4-training-table tr.sh4-memo-detail-row.is-open{
+  display:table-row !important;
+}
+
+@media screen and (max-width:768px){
+
+  .sh4-race-table tr.sh4-memo-detail-row,
+  .sh4-training-table tr.sh4-memo-detail-row{
+    display:none !important;
+  }
+
+  .sh4-race-table tr.sh4-memo-detail-row.is-open,
+  .sh4-training-table tr.sh4-memo-detail-row.is-open{
+    display:table-row !important;
+  }
+
+  .sh4-race-table tr.sh4-memo-detail-row td,
+  .sh4-training-table tr.sh4-memo-detail-row td{
+    display:table-cell !important;
+    white-space:normal !important;
+  }
+
+}
+
+/* =========================
+  出走履歴編集
+========================= */
+
+.race-col-actions{
+  text-align:center !important;
+}
+
+.race-col-actions form{
+  margin:4px 0 0;
+}
+
+.edit-btn{
+  display:inline-block;
+  padding:6px 10px;
+  background:#333;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:13px;
+  line-height:1.2;
+}
+
+.edit-btn:hover{
+  background:#555;
+}
+
+.result-edit-row{
+  display:none !important;
+}
+
+.result-edit-row.is-open{
+  display:table-row !important;
+}
+
+.result-edit-cell{
+  background:#fafafa !important;
+  padding:12px !important;
+  text-align:left !important;
+}
+
+.result-edit-form{
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:14px;
+}
+
+.result-edit-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px 12px;
+}
+
+.result-edit-form p{
+  margin:0 0 12px;
+}
+
+.result-edit-form label{
+  font-size:13px;
+  font-weight:bold;
+  color:#333;
+}
+
+.result-edit-form input,
+.result-edit-form select,
+.result-edit-form textarea{
+  width:100%;
+  padding:8px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:14px;
+  box-sizing:border-box;
+  margin-top:4px;
+}
+
+.result-edit-form textarea{
+  min-height:70px;
+}
+
+.result-edit-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+@media screen and (max-width:768px){
+
+  .result-edit-row{
+    display:none !important;
+  }
+
+  .result-edit-row.is-open{
+    display:table-row !important;
+  }
+
+  .result-edit-row:not(.is-open){
+    display:none !important;
+    visibility:hidden !important;
+    height:0 !important;
+    overflow:hidden !important;
+  }
+
+  .result-edit-cell{
+    display:table-cell !important;
+    white-space:normal !important;
+    padding:10px !important;
+  }
+
+  .result-edit-grid{
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+
+  .result-edit-form input,
+  .result-edit-form select,
+  .result-edit-form textarea{
+    font-size:13px;
+    padding:7px;
+  }
+
+  .race-col-actions{
+    white-space:normal !important;
+  }
+
+  .race-col-actions .edit-btn,
+  .race-col-actions .delete-btn{
+    padding:5px 7px;
+    font-size:11px;
+  }
+
+}
+
+/* =========================
+  出走履歴編集フォーム：スマホ非表示強制修正
+  ※ .sh4-race-table tr の display:table-row !important より強く指定
+========================= */
+
+.sh4-race-table tr.result-edit-row,
+.sh4-race-table tr.result-edit-row:not(.is-open),
+.race-history-table tr.result-edit-row,
+.race-history-table tr.result-edit-row:not(.is-open){
+  display:none !important;
+  visibility:hidden !important;
+  height:0 !important;
+  max-height:0 !important;
+  overflow:hidden !important;
+}
+
+.sh4-race-table tr.result-edit-row:not(.is-open) td,
+.race-history-table tr.result-edit-row:not(.is-open) td{
+  display:none !important;
+  padding:0 !important;
+  border:0 !important;
+  height:0 !important;
+  max-height:0 !important;
+  overflow:hidden !important;
+}
+
+.sh4-race-table tr.result-edit-row.is-open,
+.race-history-table tr.result-edit-row.is-open{
+  display:table-row !important;
+  visibility:visible !important;
+  height:auto !important;
+  max-height:none !important;
+  overflow:visible !important;
+}
+
+.sh4-race-table tr.result-edit-row.is-open td,
+.race-history-table tr.result-edit-row.is-open td{
+  display:table-cell !important;
+  padding:10px !important;
+  border:1px solid #ddd !important;
+  height:auto !important;
+  max-height:none !important;
+  overflow:visible !important;
+}
+
+@media screen and (max-width:768px){
+
+  .sh4-race-table tr.result-edit-row,
+  .sh4-race-table tr.result-edit-row:not(.is-open),
+  .race-history-table tr.result-edit-row,
+  .race-history-table tr.result-edit-row:not(.is-open){
+    display:none !important;
+    visibility:hidden !important;
+    height:0 !important;
+    max-height:0 !important;
+    overflow:hidden !important;
+  }
+
+  .sh4-race-table tr.result-edit-row:not(.is-open) td,
+  .race-history-table tr.result-edit-row:not(.is-open) td{
+    display:none !important;
+    padding:0 !important;
+    border:0 !important;
+    height:0 !important;
+    max-height:0 !important;
+    overflow:hidden !important;
+  }
+
+  .sh4-race-table tr.result-edit-row.is-open,
+  .race-history-table tr.result-edit-row.is-open{
+    display:table-row !important;
+    visibility:visible !important;
+    height:auto !important;
+    max-height:none !important;
+    overflow:visible !important;
+  }
+
+  .sh4-race-table tr.result-edit-row.is-open td,
+  .race-history-table tr.result-edit-row.is-open td{
+    display:table-cell !important;
+    padding:10px !important;
+    border:1px solid #ddd !important;
+    height:auto !important;
+    max-height:none !important;
+    overflow:visible !important;
+  }
+
+}
+
+
+/* =========================
+  適性編集：生産時・現在 横並び
+========================= */
+
+.aptitude-edit-current-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  margin-top:15px;
+}
+
+.aptitude-edit-current-item{
+  background:#f8f8f8;
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:12px;
+}
+
+.aptitude-edit-current-label{
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.aptitude-edit-current-item label{
+  display:block;
+  font-size:13px;
+  color:#555;
+  margin-bottom:10px;
+}
+
+.aptitude-edit-current-item label:last-child{
+  margin-bottom:0;
+}
+
+.aptitude-edit-current-item select{
+  margin-top:4px;
+  max-width:100%;
+}
+
+@media screen and (max-width:768px){
+
+  .aptitude-edit-current-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+
+/* =========================
+  適性表示：編集ジャンプ
+========================= */
+
+.aptitude-title-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.aptitude-title-row .aptitude-title{
+  margin:0;
+}
+
+.aptitude-edit-jump-btn{
+  appearance:none;
+  border:1px solid #ccc;
+  background:#fff;
+  color:#333;
+  width:38px;
+  height:38px;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:18px;
+  line-height:1;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.aptitude-edit-jump-btn:hover{
+  background:#f0f0f0;
+}
+
+/* =========================
+  適性編集：生産時・現在 2列
+========================= */
+
+.aptitude-current-edit-table-wrap{
+  width:100%;
+  overflow-x:visible;
+  margin-top:12px;
+}
+
+.aptitude-current-edit-table{
+  width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+  background:#fff;
+}
+
+.aptitude-current-edit-table th,
+.aptitude-current-edit-table td{
+  border:1px solid #ddd;
+  padding:8px;
+  text-align:center;
+  vertical-align:middle;
+}
+
+.aptitude-current-edit-table thead th{
+  background:#333;
+  color:#fff;
+}
+
+.aptitude-current-edit-table tbody th{
+  background:#f5f5f5;
+  width:28%;
+  font-weight:bold;
+}
+
+.aptitude-current-edit-table select{
+  width:100% !important;
+  max-width:none !important;
+  min-width:0 !important;
+  padding:7px 4px;
+  font-size:14px;
+  box-sizing:border-box;
+}
+
+@media screen and (max-width:768px){
+
+  .aptitude-current-edit-table th,
+  .aptitude-current-edit-table td{
+    padding:6px 4px;
+    font-size:12px;
+  }
+
+  .aptitude-current-edit-table tbody th{
+    width:26%;
+    word-break:keep-all;
+  }
+
+  .aptitude-current-edit-table select{
+    padding:6px 2px;
+    font-size:12px;
+  }
+
+}
+
+/* =========================
+  出走履歴フィルター・履歴ショートカット
+  ※ 既存テーブルCSSに干渉しない最小追記
+========================= */
+
+.history-tab-with-shortcut{
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+
+.history-shortcut-btn{
+  appearance:none;
+  border:1px solid #ccc;
+  background:#fff;
+  color:#333;
+  width:32px;
+  height:32px;
+  min-width:32px;
+  padding:0 !important;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:14px;
+  line-height:1;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.history-shortcut-btn:hover{
+  background:#f0f0f0;
+}
+
+.race-history-filter{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin:8px 0 12px;
+}
+
+.race-history-filter-btn{
+  appearance:none;
+  border:1px solid #ccc;
+  background:#fff;
+  color:#333;
+  padding:7px 11px;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:bold;
+  line-height:1.2;
+}
+
+.race-history-filter-btn:hover{
+  background:#f0f0f0;
+}
+
+.race-history-filter-btn.active{
+  background:#333;
+  color:#fff;
+  border-color:#333;
+}
+
+@media screen and (max-width:768px){
+
+  .history-tab-with-shortcut{
+    gap:4px;
+  }
+
+  .history-shortcut-btn{
+    width:28px;
+    height:28px;
+    min-width:28px;
+    font-size:13px;
+  }
+
+  .race-history-filter{
+    gap:5px;
+  }
+
+  .race-history-filter-btn{
+    font-size:12px;
+    padding:6px 9px;
+  }
+
+}
+
+/* =========================
+  SH4追加 20260603-060755
+  履歴ショートカット・出走履歴フィルター
+========================= */
+
+.history-title-row,
+.aptitude-title-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:0 0 12px;
+}
+
+.history-title-row h2,
+.aptitude-title-row .aptitude-title{
+  margin:0;
+}
+
+.history-shortcut-btn,
+.aptitude-edit-jump-btn{
+  appearance:none;
+  border:1px solid #ddd;
+  background:#fff;
+  color:#333;
+  border-radius:999px;
+  width:30px;
+  height:30px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  font-size:14px;
+  line-height:1;
+  padding:0;
+}
+
+.history-shortcut-btn:hover,
+.aptitude-edit-jump-btn:hover{
+  background:#f0f0f0;
+}
+
+.race-filter-tabs{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:7px;
+  margin:8px 0 12px;
+}
+
+.race-filter-all-row,
+.race-filter-grade-row{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  flex-wrap:wrap;
+}
+
+.race-filter-all-row{
+  width:100%;
+}
+
+.race-filter-grade-row{
+  width:100%;
+}
+
+.race-filter-btn{
+  appearance:none;
+  border:1px solid #ccc;
+  background:#fff;
+  color:#333;
+  padding:7px 11px;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:bold;
+  line-height:1.2;
+  white-space:nowrap;
+}
+
+.race-filter-all-btn{
+  min-width:78px;
+}
+
+.race-filter-btn:hover{
+  background:#f0f0f0;
+}
+
+.race-filter-btn.active{
+  background:#333;
+  color:#fff;
+  border-color:#333;
+}
+
+.sh4-race-table tr.is-filter-hidden,
+.race-history-table tr.is-filter-hidden{
+  display:none !important;
+}
+
+@media screen and (max-width:768px){
+  .history-shortcut-btn,
+  .aptitude-edit-jump-btn{
+    width:26px;
+    height:26px;
+    font-size:12px;
+  }
+
+  .race-filter-tabs{
+    gap:7px;
+    margin-top:6px;
+  }
+
+  .race-filter-all-row{
+    justify-content:flex-start;
+  }
+
+  .race-filter-grade-row{
+    display:grid;
+    grid-template-columns:repeat(3, max-content);
+    gap:6px;
+    align-items:center;
+  }
+
+  .race-filter-btn{
+    font-size:11px;
+    padding:6px 8px;
+  }
+
+  .race-filter-all-btn{
+    min-width:76px;
+  }
+}
