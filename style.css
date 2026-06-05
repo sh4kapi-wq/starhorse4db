@@ -1,7 +1,7 @@
+/* SH4 generated 20260605-045636 */
 /*
 Theme Name: Lightning Child
 Template: lightning
-SH4 generated 20260603-060755
 */
 
 /* =========================
@@ -2350,7 +2350,7 @@ a {
 }
 
 /* =========================
-  SH4追加 20260603-060755
+  SH4追加 20260603-145921
   履歴ショートカット・出走履歴フィルター
 ========================= */
 
@@ -2402,17 +2402,13 @@ a {
 .race-filter-all-row,
 .race-filter-grade-row{
   display:flex;
-  align-items:center;
   gap:7px;
   flex-wrap:wrap;
-}
-
-.race-filter-all-row{
-  width:100%;
+  align-items:center;
 }
 
 .race-filter-grade-row{
-  width:100%;
+  max-width:100%;
 }
 
 .race-filter-btn{
@@ -2420,17 +2416,18 @@ a {
   border:1px solid #ccc;
   background:#fff;
   color:#333;
-  padding:7px 11px;
+  padding:6px 10px;
   border-radius:999px;
   cursor:pointer;
-  font-size:13px;
+  font-size:12px;
   font-weight:bold;
   line-height:1.2;
   white-space:nowrap;
 }
 
 .race-filter-all-btn{
-  min-width:78px;
+  padding-left:14px;
+  padding-right:14px;
 }
 
 .race-filter-btn:hover{
@@ -2457,27 +2454,27 @@ a {
   }
 
   .race-filter-tabs{
-    gap:7px;
-    margin-top:6px;
+    gap:6px;
   }
 
-  .race-filter-all-row{
-    justify-content:flex-start;
+  .race-filter-all-row,
+  .race-filter-grade-row{
+    gap:6px;
   }
 
   .race-filter-grade-row{
     display:grid;
-    grid-template-columns:repeat(3, max-content);
-    gap:6px;
-    align-items:center;
+    grid-template-columns:repeat(3, auto);
+    justify-content:start;
   }
 
   .race-filter-btn{
     font-size:11px;
-    padding:6px 8px;
+    padding:5px 8px;
   }
 
   .race-filter-all-btn{
-    min-width:76px;
+    padding-left:13px;
+    padding-right:13px;
   }
 }

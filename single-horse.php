@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php /* SH4 generated 20260605-044444 */ ?>
+<?php /* SH4 generated 20260605-045636 */ ?>
 
 <?php
 if (!function_exists('sh4_aptitude_label')) {
@@ -903,14 +903,18 @@ $temper_options = [
         echo '<button type="button" class="history-shortcut-btn" data-shortcut-target="race-add-panel" aria-label="出走履歴を追加">✏️</button>';
       }
       echo '</div>';
-      echo '<div class="race-filter-tabs" aria-label="出走履歴フィルター">';
-      echo '<button type="button" class="race-filter-btn active" data-race-filter="all">全レース</button>';
+      echo '<div class="race-filter-tabs race-filter-tabs-stacked" aria-label="出走履歴フィルター">';
+      echo '<div class="race-filter-all-row">';
+      echo '<button type="button" class="race-filter-btn race-filter-all-btn active" data-race-filter="all">全レース</button>';
+      echo '</div>';
+      echo '<div class="race-filter-grade-row">';
       echo '<button type="button" class="race-filter-btn" data-race-filter="SWBC">SWBC</button>';
       echo '<button type="button" class="race-filter-btn" data-race-filter="WBC">WBC</button>';
       echo '<button type="button" class="race-filter-btn" data-race-filter="海外G1">海外G1</button>';
       echo '<button type="button" class="race-filter-btn" data-race-filter="国内G1">国内G1</button>';
       echo '<button type="button" class="race-filter-btn" data-race-filter="G2">国内G2</button>';
       echo '<button type="button" class="race-filter-btn" data-race-filter="G3">国内G3</button>';
+      echo '</div>';
       echo '</div>';
       echo '<div class="table-wrap race-table-wrap">';
       echo '<table class="sh4-race-table race-history-table">';
@@ -1282,7 +1286,7 @@ $temper_options = [
       </p>
 
       <p>
-        残週：
+        レース時点の残り週：
         <input type="number" name="race_remaining_weeks" min="0" max="999">
       </p>
 
@@ -1396,7 +1400,7 @@ $temper_options = [
       </div>
 
       <p>
-        残週<br>
+        調教時点の残り週<br>
         <input type="number" name="training_remaining_weeks" min="0" max="999">
       </p>
 
