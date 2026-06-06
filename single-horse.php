@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php /* SH4 generated 20260605-045636 */ ?>
+<?php /* SH4 generated 20260606-111850 - race order insert support */ ?>
 
 <?php
 if (!function_exists('sh4_aptitude_label')) {
@@ -865,19 +865,32 @@ $temper_options = [
 
     <?php
 
-    $display_results = get_posts([
-      'post_type' => 'result',
-      'posts_per_page' => -1,
-      'orderby' => 'ID',
-      'order' => 'DESC',
-      'meta_query' => [
-        [
-          'key' => 'horse',
-          'value' => get_the_ID(),
-          'compare' => '='
+    $display_result_ids = function_exists('sh4_get_ordered_result_ids')
+      ? sh4_get_ordered_result_ids(get_the_ID())
+      : [];
+
+    if (!empty($display_result_ids)) {
+      $display_results = get_posts([
+        'post_type' => 'result',
+        'posts_per_page' => -1,
+        'post__in' => $display_result_ids,
+        'orderby' => 'post__in',
+      ]);
+    } else {
+      $display_results = get_posts([
+        'post_type' => 'result',
+        'posts_per_page' => -1,
+        'orderby' => 'ID',
+        'order' => 'DESC',
+        'meta_query' => [
+          [
+            'key' => 'horse',
+            'value' => get_the_ID(),
+            'compare' => '='
+          ]
         ]
-      ]
-    ]);
+      ]);
+    }
 
     $all_races_for_edit = [];
 
@@ -896,6 +909,20 @@ $temper_options = [
       }
     }
 
+    $race_order_display_labels = [];
+    if (function_exists('sh4_get_ordered_result_ids')) {
+      $race_order_display_ids = sh4_get_ordered_result_ids(get_the_ID());
+    } else {
+      $race_order_display_ids = !empty($display_results) ? wp_list_pluck($display_results, 'ID') : [];
+    }
+
+    foreach ($race_order_display_ids as $index => $order_result_id) {
+      $order_result_id = intval($order_result_id);
+      $order_race_id = get_field('race', $order_result_id);
+      $order_race_name = $order_race_id ? get_the_title($order_race_id) : get_the_title($order_result_id);
+      $race_order_display_labels[$index + 1] = $order_race_name ?: '出走履歴';
+    }
+
     if ($display_results || $initial_history_rows) {
 
       echo '<div class="history-title-row"><h2>出走履歴</h2>';
@@ -903,11 +930,11 @@ $temper_options = [
         echo '<button type="button" class="history-shortcut-btn" data-shortcut-target="race-add-panel" aria-label="出走履歴を追加">✏️</button>';
       }
       echo '</div>';
-      echo '<div class="race-filter-tabs race-filter-tabs-stacked" aria-label="出走履歴フィルター">';
-      echo '<div class="race-filter-all-row">';
-      echo '<button type="button" class="race-filter-btn race-filter-all-btn active" data-race-filter="all">全レース</button>';
+      echo '<div class="race-filter-tabs" aria-label="出走履歴フィルター">';
+      echo '<div class="race-filter-primary">';
+      echo '<button type="button" class="race-filter-btn active" data-race-filter="all">全レース</button>';
       echo '</div>';
-      echo '<div class="race-filter-grade-row">';
+      echo '<div class="race-filter-grade-grid">';
       echo '<button type="button" class="race-filter-btn" data-race-filter="SWBC">SWBC</button>';
       echo '<button type="button" class="race-filter-btn" data-race-filter="WBC">WBC</button>';
       echo '<button type="button" class="race-filter-btn" data-race-filter="海外G1">海外G1</button>';
@@ -945,6 +972,7 @@ $temper_options = [
         $limit_odds = get_field('limit_odds', $result->ID);
         $race_remaining_weeks = get_field('race_remaining_weeks', $result->ID);
         $race_memo = get_field('race_memo', $result->ID);
+        $race_order = get_post_meta($result->ID, 'race_order', true);
 
         if (!$race_id) continue;
 
@@ -996,6 +1024,21 @@ $temper_options = [
           echo '<input type="hidden" name="result_id" value="'.esc_attr($result->ID).'">';
 
           echo '<div class="result-edit-grid">';
+
+          $result_order_count = count($display_results);
+          $current_result_order = intval($race_order ?: 0);
+          if ($current_result_order < 1) {
+            $current_result_order = 1;
+          }
+          echo '<p><label>出走順<br><select name="edit_result_order_position">';
+          for ($i = 1; $i <= max(1, $result_order_count); $i++) {
+            $edit_order_label = $i . '番目';
+            if (!empty($race_order_display_labels[$i])) {
+              $edit_order_label .= '：' . $race_order_display_labels[$i];
+            }
+            echo '<option value="'.esc_attr($i).'" '.selected($current_result_order, $i, false).'>'.esc_html($edit_order_label).'</option>';
+          }
+          echo '</select></label><span class="form-help-text">変更すると前後の出走順も自動で並び替わります。</span></p>';
 
           echo '<p><label>レース<br><select name="edit_result_race_id">';
           foreach ($all_races_for_edit as $edit_race) {
@@ -1218,6 +1261,46 @@ $temper_options = [
 
     <form method="post" class="result-form">
 
+      <?php
+      $race_order_insert_ids = [];
+      if (function_exists('sh4_normalize_result_order') && function_exists('sh4_get_ordered_result_ids')) {
+        sh4_normalize_result_order(get_the_ID());
+        $race_order_insert_ids = sh4_get_ordered_result_ids(get_the_ID());
+      } elseif (!empty($display_results)) {
+        $race_order_insert_ids = wp_list_pluck($display_results, 'ID');
+      }
+
+      $race_order_insert_count = count($race_order_insert_ids);
+      $race_order_insert_labels = [];
+
+      foreach ($race_order_insert_ids as $index => $order_result_id) {
+        $order_result_id = intval($order_result_id);
+        $order_race_id = get_field('race', $order_result_id);
+        $order_race_name = $order_race_id ? get_the_title($order_race_id) : get_the_title($order_result_id);
+        $race_order_insert_labels[$index + 1] = $order_race_name ?: '出走履歴';
+      }
+      ?>
+
+      <p>
+        出走順：
+        <select name="race_order_position">
+          <option value="">最後に追加<?php echo $race_order_insert_count > 0 ? '（' . esc_html($race_order_insert_count + 1) . '番目）' : ''; ?></option>
+          <?php for ($i = 1; $i <= $race_order_insert_count + 1; $i++) : ?>
+            <?php
+            if ($i === 1) {
+              $insert_label = '1番目：先頭に挿入';
+            } elseif ($i <= $race_order_insert_count) {
+              $insert_label = $i . '番目：' . ($race_order_insert_labels[$i] ?? '現在の' . $i . '番目') . 'の前に挿入';
+            } else {
+              $insert_label = $i . '番目：最後に追加';
+            }
+            ?>
+            <option value="<?php echo esc_attr($i); ?>"><?php echo esc_html($insert_label); ?></option>
+          <?php endfor; ?>
+        </select>
+        <span class="form-help-text">途中に入れると、その位置以降の出走順は自動で後ろにずれます。</span>
+      </p>
+
       <div id="race-tabs">
         <button type="button" data-grade="SWBC">SWBC</button>
         <button type="button" data-grade="WBC">WBC</button>
@@ -1286,7 +1369,7 @@ $temper_options = [
       </p>
 
       <p>
-        レース時点の残り週：
+        残週：
         <input type="number" name="race_remaining_weeks" min="0" max="999">
       </p>
 

@@ -3036,3 +3036,64 @@ a {
     padding:14px;
   }
 }
+
+
+/* =========================
+  出走履歴フィルター整列 20260606-113222
+========================= */
+
+.race-filter-tabs{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  gap:8px !important;
+  margin:10px 0 14px !important;
+}
+
+.race-filter-primary{
+  display:flex;
+  justify-content:center;
+  width:100%;
+}
+
+.race-filter-grade-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:7px;
+  width:100%;
+  max-width:420px;
+}
+
+.race-filter-primary .race-filter-btn{
+  min-width:150px;
+}
+
+.race-filter-grade-grid .race-filter-btn{
+  width:100%;
+  min-width:0;
+  padding:7px 6px;
+  text-align:center;
+  white-space:nowrap;
+}
+
+.result-form select[name="race_order_position"],
+.result-edit-form select[name="edit_result_order_position"]{
+  max-width:100%;
+}
+
+@media screen and (max-width:768px){
+  .race-filter-grade-grid{
+    max-width:360px;
+    gap:6px;
+  }
+
+  .race-filter-grade-grid .race-filter-btn{
+    font-size:11px;
+    padding:6px 4px;
+  }
+
+  .race-filter-primary .race-filter-btn{
+    min-width:130px;
+    font-size:12px;
+  }
+}
