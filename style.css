@@ -1,4 +1,3 @@
-/* SH4 generated 20260605-045636 */
 /*
 Theme Name: Lightning Child
 Template: lightning
@@ -2393,22 +2392,9 @@ a {
 
 .race-filter-tabs{
   display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  gap:7px;
-  margin:8px 0 12px;
-}
-
-.race-filter-all-row,
-.race-filter-grade-row{
-  display:flex;
-  gap:7px;
+  gap:8px;
   flex-wrap:wrap;
-  align-items:center;
-}
-
-.race-filter-grade-row{
-  max-width:100%;
+  margin:8px 0 12px;
 }
 
 .race-filter-btn{
@@ -2416,18 +2402,12 @@ a {
   border:1px solid #ccc;
   background:#fff;
   color:#333;
-  padding:6px 10px;
+  padding:7px 11px;
   border-radius:999px;
   cursor:pointer;
-  font-size:12px;
+  font-size:13px;
   font-weight:bold;
   line-height:1.2;
-  white-space:nowrap;
-}
-
-.race-filter-all-btn{
-  padding-left:14px;
-  padding-right:14px;
 }
 
 .race-filter-btn:hover{
@@ -2457,24 +2437,602 @@ a {
     gap:6px;
   }
 
-  .race-filter-all-row,
-  .race-filter-grade-row{
-    gap:6px;
-  }
-
-  .race-filter-grade-row{
-    display:grid;
-    grid-template-columns:repeat(3, auto);
-    justify-content:start;
-  }
-
   .race-filter-btn{
-    font-size:11px;
-    padding:5px 8px;
+    font-size:12px;
+    padding:6px 9px;
+  }
+}
+
+/* =========================
+  TOPページ 20260605-064807
+========================= */
+
+.sh4-front-wrap{
+  max-width:1100px;
+  margin:0 auto 60px;
+  padding:0 16px 30px;
+}
+
+.sh4-front-hero{
+  margin:18px 0 28px;
+  border-radius:24px;
+  background:linear-gradient(135deg,#111 0%,#2b2b2b 48%,#525252 100%);
+  color:#fff;
+  overflow:hidden;
+  position:relative;
+}
+
+.sh4-front-hero::after{
+  content:"";
+  position:absolute;
+  right:-80px;
+  top:-90px;
+  width:240px;
+  height:240px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.1);
+}
+
+.sh4-front-hero-inner{
+  position:relative;
+  z-index:1;
+  padding:44px 28px;
+}
+
+.sh4-front-kicker,
+.sh4-front-section-label{
+  margin:0 0 8px;
+  color:#777;
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+}
+
+.sh4-front-hero .sh4-front-kicker{
+  color:#ddd;
+}
+
+.sh4-front-hero h1{
+  margin:0 0 12px;
+  font-size:42px;
+  line-height:1.15;
+  color:#fff;
+}
+
+.sh4-front-lead{
+  max-width:650px;
+  margin:0;
+  font-size:17px;
+  line-height:1.9;
+  color:#f2f2f2;
+}
+
+.sh4-front-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:24px;
+}
+
+.sh4-front-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding:11px 18px;
+  border-radius:999px;
+  font-weight:bold;
+  line-height:1.2;
+}
+
+.sh4-front-btn-primary{
+  background:#fff;
+  color:#222;
+}
+
+.sh4-front-btn-primary:hover{
+  background:#f0f0f0;
+  color:#222;
+}
+
+.sh4-front-btn-secondary{
+  background:rgba(255,255,255,0.12);
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.35);
+}
+
+.sh4-front-btn-secondary:hover{
+  background:rgba(255,255,255,0.2);
+  color:#fff;
+}
+
+.sh4-front-section{
+  margin:28px 0;
+}
+
+.sh4-front-section-head{
+  margin-bottom:14px;
+}
+
+.sh4-front-section h2,
+.sh4-front-panel h2,
+.sh4-front-about h2{
+  margin:0;
+  font-size:24px;
+  line-height:1.4;
+}
+
+.sh4-feature-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.sh4-feature-card,
+.sh4-front-panel,
+.sh4-front-about-card{
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:18px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.06);
+}
+
+.sh4-feature-card{
+  padding:20px;
+}
+
+.sh4-feature-icon{
+  width:46px;
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:12px;
+  border-radius:14px;
+  background:#f5f5f5;
+  font-size:24px;
+}
+
+.sh4-feature-card h3{
+  margin:0 0 8px;
+  font-size:18px;
+}
+
+.sh4-feature-card p,
+.sh4-front-about-card p{
+  margin:0;
+  color:#555;
+  line-height:1.8;
+}
+
+.sh4-front-two-column{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.sh4-front-panel{
+  padding:18px;
+}
+
+.sh4-front-panel-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.sh4-front-panel-head a{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:7px 10px;
+  border-radius:999px;
+  background:#f5f5f5;
+  color:#333;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.sh4-ranking-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.sh4-ranking-item{
+  display:grid;
+  grid-template-columns:38px 1fr auto;
+  align-items:center;
+  gap:10px;
+  padding:10px;
+  border:1px solid #eee;
+  border-radius:14px;
+  background:#fafafa;
+  color:#222;
+}
+
+.sh4-ranking-item:hover,
+.sh4-recent-horse-card:hover{
+  background:#f0f0f0;
+  color:#222;
+}
+
+.sh4-ranking-rank{
+  width:32px;
+  height:32px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#333;
+  color:#fff;
+  font-weight:bold;
+}
+
+.sh4-ranking-main strong,
+.sh4-ranking-main em{
+  display:block;
+}
+
+.sh4-ranking-main strong{
+  font-size:15px;
+}
+
+.sh4-ranking-main em,
+.sh4-recent-horse-card span{
+  margin-top:3px;
+  color:#777;
+  font-size:12px;
+  font-style:normal;
+}
+
+.sh4-ranking-prize{
+  font-weight:bold;
+  white-space:nowrap;
+}
+
+.sh4-recent-horse-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.sh4-recent-horse-card{
+  display:block;
+  padding:12px;
+  border:1px solid #eee;
+  border-radius:14px;
+  background:#fafafa;
+  color:#222;
+}
+
+.sh4-recent-horse-card strong,
+.sh4-recent-horse-card span,
+.sh4-recent-horse-card em{
+  display:block;
+}
+
+.sh4-recent-horse-card strong{
+  font-size:15px;
+}
+
+.sh4-recent-horse-card em{
+  margin-top:8px;
+  color:#222;
+  font-style:normal;
+  font-weight:bold;
+}
+
+.sh4-front-empty{
+  margin:10px 0 0;
+  color:#777;
+  line-height:1.8;
+}
+
+.sh4-front-about-card{
+  padding:24px;
+  background:linear-gradient(180deg,#fff 0%,#f7f7f7 100%);
+}
+
+.sh4-front-about-card h2{
+  margin-bottom:10px;
+}
+
+.sh4-front-about-tags{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.sh4-front-about-tags span{
+  display:inline-flex;
+  align-items:center;
+  padding:7px 10px;
+  border-radius:999px;
+  background:#333;
+  color:#fff;
+  font-size:12px;
+  font-weight:bold;
+}
+
+@media screen and (max-width:768px){
+
+  .sh4-front-wrap{
+    padding:0 12px 28px;
   }
 
-  .race-filter-all-btn{
-    padding-left:13px;
-    padding-right:13px;
+  .sh4-front-hero{
+    margin-top:12px;
+    border-radius:20px;
+  }
+
+  .sh4-front-hero-inner{
+    padding:34px 20px;
+  }
+
+  .sh4-front-hero h1{
+    font-size:34px;
+  }
+
+  .sh4-front-lead{
+    font-size:15px;
+    line-height:1.8;
+  }
+
+  .sh4-front-actions{
+    flex-direction:column;
+  }
+
+  .sh4-front-btn{
+    width:100%;
+    box-sizing:border-box;
+  }
+
+  .sh4-feature-grid,
+  .sh4-front-two-column{
+    grid-template-columns:1fr;
+  }
+
+  .sh4-front-section h2,
+  .sh4-front-panel h2,
+  .sh4-front-about h2{
+    font-size:21px;
+  }
+
+  .sh4-front-panel{
+    padding:15px;
+  }
+
+  .sh4-ranking-item{
+    grid-template-columns:34px 1fr;
+  }
+
+  .sh4-ranking-prize{
+    grid-column:2;
+    justify-self:start;
+    margin-top:-4px;
+    font-size:13px;
+  }
+
+  .sh4-recent-horse-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+
+/* =========================
+  SH4 generated 20260606-104555
+  厩舎一覧・Xアカウント
+========================= */
+
+.sh4-stables-wrap{
+  max-width:1100px;
+  margin:0 auto 50px;
+}
+
+.sh4-stables-hero{
+  background:linear-gradient(135deg,#222,#444);
+  color:#fff;
+  border-radius:20px;
+  padding:26px 22px;
+  margin:20px 0 22px;
+  box-shadow:0 8px 22px rgba(0,0,0,0.16);
+}
+
+.sh4-stables-kicker{
+  margin:0 0 6px;
+  font-size:12px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:#d7d7d7;
+  font-weight:bold;
+}
+
+.sh4-stables-hero h1{
+  margin:0 0 8px;
+  font-size:30px;
+}
+
+.sh4-stables-hero p{
+  margin:0;
+  color:#f0f0f0;
+  line-height:1.8;
+}
+
+.sh4-stables-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+  gap:16px;
+  margin-top:18px;
+}
+
+.sh4-stable-card{
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:18px;
+  padding:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.sh4-stable-card-head{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+  margin-bottom:12px;
+}
+
+.sh4-stable-card h2{
+  margin:0;
+  font-size:20px;
+  color:#222;
+}
+
+.sh4-stable-label{
+  display:block;
+  margin:0 0 4px;
+  font-size:12px;
+  color:#777;
+  font-weight:bold;
+}
+
+.sh4-stable-horse-count{
+  flex:0 0 auto;
+  min-width:58px;
+  padding:8px 10px;
+  border-radius:14px;
+  background:#f2f2f2;
+  text-align:center;
+  font-size:22px;
+  font-weight:bold;
+  color:#222;
+}
+
+.sh4-stable-horse-count span{
+  display:block;
+  font-size:11px;
+  color:#777;
+}
+
+.sh4-stable-x{
+  margin:8px 0 14px;
+  font-size:14px;
+}
+
+.sh4-stable-x a{
+  color:#111;
+  font-weight:bold;
+}
+
+.sh4-stable-x span{
+  color:#777;
+}
+
+.sh4-stable-representative{
+  background:#f8f8f8;
+  border-radius:14px;
+  padding:12px;
+  margin-bottom:14px;
+}
+
+.sh4-stable-top-horse{
+  display:block;
+  font-size:18px;
+  font-weight:bold;
+  color:#222;
+  margin-bottom:4px;
+}
+
+.sh4-stable-representative strong{
+  font-size:16px;
+  color:#333;
+}
+
+.sh4-stable-link-btn{
+  display:block;
+  width:100%;
+  box-sizing:border-box;
+  padding:10px 12px;
+  border-radius:10px;
+  background:#333;
+  color:#fff;
+  text-align:center;
+  font-weight:bold;
+}
+
+.sh4-stable-link-btn:hover{
+  background:#555;
+  color:#fff;
+}
+
+.sh4-stable-detail-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:14px;
+}
+
+.sh4-stable-detail-meta span,
+.sh4-stable-detail-meta a{
+  display:inline-block;
+  background:rgba(255,255,255,0.12);
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.18);
+  border-radius:999px;
+  padding:7px 10px;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.sh4-stables-back a{
+  display:inline-block;
+  margin:0 0 16px;
+  color:#333;
+  font-weight:bold;
+}
+
+.sh4-stable-horse-list{
+  margin-top:14px;
+}
+
+.sh4-empty-card{
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:16px;
+  padding:18px;
+  color:#555;
+}
+
+.sh4-current-stable-name{
+  line-height:1.8;
+}
+
+.sh4-current-stable-name a{
+  font-weight:bold;
+  color:#222;
+}
+
+@media screen and (max-width:768px){
+  .sh4-stables-hero{
+    padding:22px 16px;
+    border-radius:16px;
+  }
+
+  .sh4-stables-hero h1{
+    font-size:26px;
+  }
+
+  .sh4-stables-grid{
+    grid-template-columns:1fr;
+  }
+
+  .sh4-stable-card{
+    padding:14px;
   }
 }
