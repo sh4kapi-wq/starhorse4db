@@ -1219,6 +1219,22 @@ add_action('template_redirect', function(){
 
 });
 
+
+/* =========================
+  管理バー表示制御
+  SH4 generated 20260606-013416
+  - 管理者以外のログインユーザーには上部のWordPress管理バーを表示しません。
+========================= */
+add_filter('show_admin_bar', function($show) {
+
+  if (!is_user_logged_in()) {
+    return false;
+  }
+
+  return current_user_can('manage_options');
+
+});
+
 add_action('send_headers', function(){
 
   if (
