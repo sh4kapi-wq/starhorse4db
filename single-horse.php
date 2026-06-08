@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<?php /* SH4 generated 20260606-134845 */ ?>
 <?php /* SH4 generated 20260606-111850 - race order insert support */ ?>
 
 <?php
@@ -963,6 +964,9 @@ $temper_options = [
       <tbody>
       ';
 
+      $race_mobile_display_no = 1;
+      $race_mobile_display_total = is_array($display_results) ? count($display_results) : 0;
+
       foreach ($display_results as $result) {
 
         $race_id = get_field('race', $result->ID);
@@ -978,10 +982,17 @@ $temper_options = [
 
         $prize = $rank ? (int)get_field('prize_' . $rank, $race_id) : 0;
         $race_grade = get_field('grade', $race_id);
+        $race_display_no = intval($race_order ?: 0);
+        if ($race_display_no < 1) {
+          // スマホ表示用の暫定番号は「何レース目」になるよう、
+          // 新しい履歴ほど大きい番号にします。
+          $race_display_no = max(1, $race_mobile_display_total - $race_mobile_display_no + 1);
+        }
+        $race_mobile_display_no++;
 
         echo '<tr class="race-history-data-row" data-race-grade="'.esc_attr($race_grade).'">';
 
-        echo '<td data-label="レース" class="race-col-name">'.esc_html(get_the_title($race_id)).'</td>';
+        echo '<td data-label="レース" class="race-col-name"><span class="race-mobile-order">'.esc_html($race_display_no).'</span><span class="race-mobile-name">'.esc_html(get_the_title($race_id)).'</span></td>';
         echo '<td data-label="着" class="race-col-rank">'.esc_html($rank).'着</td>';
         echo '<td data-label="人" class="race-col-popularity">'.esc_html($popularity).'</td>';
         echo '<td data-label="ｵｯｽﾞ" class="race-col-odds">'.esc_html(number_format((float)$odds, 1)).'</td>';
@@ -1104,7 +1115,7 @@ $temper_options = [
 
         echo '<tr class="initial-race-row race-history-data-row" data-race-grade="'.esc_attr($initial_filter_grade).'">';
 
-        echo '<td data-label="レース" class="race-col-name">'.esc_html($initial_row['race_name']).'</td>';
+        echo '<td data-label="レース" class="race-col-name"><span class="race-mobile-order race-mobile-order-initial">初</span><span class="race-mobile-name">'.esc_html($initial_row['race_name']).'</span></td>';
         echo '<td data-label="着" class="race-col-rank">'.esc_html($initial_row['rank']).'着</td>';
         echo '<td data-label="人" class="race-col-popularity">-</td>';
         echo '<td data-label="ｵｯｽﾞ" class="race-col-odds">-</td>';

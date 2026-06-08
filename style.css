@@ -3097,3 +3097,1343 @@ a {
     font-size:12px;
   }
 }
+
+/* =========================
+  出走履歴フィルター・スマホ2行表示 20260606-120502
+========================= */
+.race-mobile-order{
+  display:none;
+}
+
+.race-filter-tabs{
+  align-items:flex-start !important;
+  justify-content:flex-start !important;
+}
+
+.race-filter-primary{
+  width:100% !important;
+  display:flex !important;
+  justify-content:flex-start !important;
+}
+
+.race-filter-grade-grid{
+  width:100% !important;
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:7px !important;
+}
+
+.race-filter-grade-grid .race-filter-btn,
+.race-filter-primary .race-filter-btn{
+  width:100% !important;
+  text-align:center !important;
+}
+
+.race-filter-primary .race-filter-btn{
+  max-width:150px !important;
+}
+
+@media screen and (max-width:768px){
+
+  .race-filter-tabs{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    gap:8px !important;
+    margin:8px 0 12px !important;
+  }
+
+  .race-filter-primary{
+    width:100% !important;
+    justify-content:flex-start !important;
+  }
+
+  .race-filter-primary .race-filter-btn{
+    width:auto !important;
+    min-width:104px !important;
+    max-width:none !important;
+    padding:7px 12px !important;
+    font-size:12px !important;
+  }
+
+  .race-filter-grade-grid{
+    width:100% !important;
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:6px !important;
+  }
+
+  .race-filter-grade-grid .race-filter-btn{
+    width:100% !important;
+    padding:7px 4px !important;
+    font-size:11px !important;
+    white-space:nowrap !important;
+  }
+
+  .race-table-wrap{
+    overflow:visible !important;
+  }
+
+  .race-table-wrap .sh4-race-table,
+  .sh4-race-table.race-history-table{
+    display:block !important;
+    width:100% !important;
+    min-width:0 !important;
+    max-width:100% !important;
+    border-collapse:separate !important;
+    border-spacing:0 !important;
+  }
+
+  .sh4-race-table thead{
+    display:none !important;
+  }
+
+  .sh4-race-table tbody{
+    display:block !important;
+    width:100% !important;
+  }
+
+  .sh4-race-table tr.race-history-data-row{
+    display:grid !important;
+    grid-template-columns:auto 1fr auto auto auto;
+    grid-template-areas:
+      "name name popularity odds limit"
+      "prize week memo actions actions";
+    align-items:center !important;
+    gap:5px 6px !important;
+    width:100% !important;
+    margin:0 0 8px !important;
+    padding:8px !important;
+    border:1px solid #ddd !important;
+    border-radius:10px !important;
+    background:#fff !important;
+    box-sizing:border-box !important;
+  }
+
+  .sh4-race-table tr.race-history-data-row.is-filter-hidden{
+    display:none !important;
+  }
+
+  .sh4-race-table tr.race-history-data-row td{
+    display:block !important;
+    width:auto !important;
+    min-width:0 !important;
+    max-width:none !important;
+    padding:0 !important;
+    border:0 !important;
+    background:transparent !important;
+    font-size:12px !important;
+    line-height:1.35 !important;
+    white-space:nowrap !important;
+    text-align:left !important;
+    box-sizing:border-box !important;
+  }
+
+  .sh4-race-table tr.race-history-data-row td::before{
+    content:none !important;
+    display:none !important;
+  }
+
+  .sh4-race-table .race-col-name{
+    grid-area:name;
+    display:flex !important;
+    align-items:center !important;
+    gap:6px !important;
+    overflow:hidden !important;
+  }
+
+  .race-mobile-order{
+    display:inline-flex !important;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 auto;
+    min-width:22px;
+    height:22px;
+    padding:0 5px;
+    border-radius:999px;
+    background:#333;
+    color:#fff;
+    font-size:11px;
+    font-weight:bold;
+    line-height:1;
+  }
+
+  .race-mobile-order-initial{
+    background:#777;
+  }
+
+  .race-mobile-name{
+    display:block;
+    min-width:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    font-size:13px;
+    font-weight:bold;
+  }
+
+  .sh4-race-table .race-col-rank{
+    display:none !important;
+  }
+
+  .sh4-race-table .race-col-popularity{
+    grid-area:popularity;
+    text-align:right !important;
+  }
+
+  .sh4-race-table .race-col-popularity::after{
+    content:"人気";
+  }
+
+  .sh4-race-table .race-col-odds{
+    grid-area:odds;
+    text-align:right !important;
+  }
+
+  .sh4-race-table .race-col-odds::before{
+    content:"オッズ " !important;
+    display:inline !important;
+    color:#777;
+    font-weight:normal;
+  }
+
+  .sh4-race-table .race-col-limit{
+    grid-area:limit;
+    text-align:right !important;
+  }
+
+  .sh4-race-table .race-col-limit::before{
+    content:"単ラ " !important;
+    display:inline !important;
+    color:#777;
+    font-weight:normal;
+  }
+
+  .sh4-race-table .race-col-prize{
+    grid-area:prize;
+    font-weight:bold;
+  }
+
+  .sh4-race-table .race-col-prize::before{
+    content:"賞金 " !important;
+    display:inline !important;
+    color:#777;
+    font-weight:normal;
+  }
+
+  .sh4-race-table .race-col-prize::after{
+    content:"枚";
+  }
+
+  .sh4-race-table .race-col-week{
+    grid-area:week;
+  }
+
+  .sh4-race-table .race-col-week::before{
+    content:"残週 " !important;
+    display:inline !important;
+    color:#777;
+    font-weight:normal;
+  }
+
+  .sh4-race-table .race-col-memo{
+    grid-area:memo;
+    overflow:hidden !important;
+  }
+
+  .sh4-race-table .race-col-memo::before{
+    content:"メモ " !important;
+    display:inline !important;
+    color:#777;
+    font-weight:normal;
+  }
+
+  .sh4-race-table .race-col-actions,
+  .sh4-race-table .race-col-delete{
+    grid-area:actions;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:4px !important;
+    white-space:nowrap !important;
+  }
+
+  .race-col-actions form{
+    margin:0 !important;
+  }
+
+  .race-col-actions .edit-btn,
+  .race-col-actions .delete-btn{
+    padding:4px 7px !important;
+    font-size:11px !important;
+    border-radius:7px !important;
+  }
+
+  .sh4-race-table .sh4-memo-inline{
+    display:inline-flex !important;
+    width:auto !important;
+    max-width:100% !important;
+    vertical-align:middle;
+  }
+
+  .sh4-race-table .sh4-memo-inline .sh4-memo-preview{
+    max-width:70px;
+  }
+
+  .sh4-race-table .sh4-memo-inline .sh4-memo-toggle{
+    width:19px;
+    height:19px;
+    line-height:19px;
+    font-size:11px;
+  }
+
+  .sh4-race-table tr.sh4-memo-detail-row.is-open,
+  .sh4-race-table tr.result-edit-row.is-open{
+    display:block !important;
+    width:100% !important;
+    margin:-4px 0 8px !important;
+  }
+
+  .sh4-race-table tr.sh4-memo-detail-row.is-open td,
+  .sh4-race-table tr.result-edit-row.is-open td{
+    display:block !important;
+    width:100% !important;
+    box-sizing:border-box !important;
+  }
+}
+
+/* =========================
+  出走履歴フィルター・スマホ超コンパクトリスト 20260606-121945
+  PC表示は維持し、スマホだけ横スクロールなしの高密度表示にする
+========================= */
+
+.race-filter-tabs{
+  align-items:flex-start !important;
+  justify-content:flex-start !important;
+}
+
+.race-filter-primary{
+  justify-content:flex-start !important;
+}
+
+@media screen and (max-width:768px){
+
+  .race-filter-tabs{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    gap:6px !important;
+    margin:8px 0 10px !important;
+  }
+
+  .race-filter-primary{
+    width:100% !important;
+    display:flex !important;
+    justify-content:flex-start !important;
+  }
+
+  .race-filter-primary .race-filter-btn{
+    width:auto !important;
+    min-width:104px !important;
+    max-width:140px !important;
+    padding:6px 12px !important;
+    font-size:12px !important;
+  }
+
+  .race-filter-grade-grid{
+    width:100% !important;
+    max-width:none !important;
+    display:grid !important;
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:5px !important;
+  }
+
+  .race-filter-grade-grid .race-filter-btn{
+    width:100% !important;
+    min-width:0 !important;
+    padding:6px 3px !important;
+    font-size:11px !important;
+    white-space:nowrap !important;
+  }
+
+  .race-table-wrap{
+    overflow:visible !important;
+    width:100% !important;
+    max-width:100% !important;
+  }
+
+  .race-table-wrap .sh4-race-table,
+  .sh4-race-table.race-history-table{
+    display:block !important;
+    width:100% !important;
+    min-width:0 !important;
+    max-width:100% !important;
+    border-collapse:separate !important;
+    border-spacing:0 !important;
+    table-layout:auto !important;
+    background:transparent !important;
+  }
+
+  .sh4-race-table thead{
+    display:none !important;
+  }
+
+  .sh4-race-table tbody{
+    display:block !important;
+    width:100% !important;
+  }
+
+  .sh4-race-table tr.race-history-data-row{
+    display:grid !important;
+    grid-template-columns:auto minmax(0,1fr) auto auto auto auto;
+    grid-template-areas:
+      "name name rank pop odds limit"
+      "prize week memo memo actions actions";
+    align-items:center !important;
+    gap:1px 5px !important;
+    width:100% !important;
+    margin:0 !important;
+    padding:3px 0 !important;
+    border:none !important;
+    border-bottom:1px solid #e6e6e6 !important;
+    border-radius:0 !important;
+    background:#fff !important;
+    box-sizing:border-box !important;
+  }
+
+  .sh4-race-table tr.race-history-data-row.is-filter-hidden{
+    display:none !important;
+  }
+
+  .sh4-race-table tr.race-history-data-row td{
+    display:block !important;
+    width:auto !important;
+    min-width:0 !important;
+    max-width:none !important;
+    padding:0 !important;
+    border:0 !important;
+    background:transparent !important;
+    font-size:11px !important;
+    line-height:1.25 !important;
+    white-space:nowrap !important;
+    text-align:left !important;
+    box-sizing:border-box !important;
+    color:#333 !important;
+  }
+
+  .sh4-race-table tr.race-history-data-row td::before{
+    content:none !important;
+    display:none !important;
+  }
+
+  .sh4-race-table .race-col-name{
+    grid-area:name;
+    display:flex !important;
+    align-items:center !important;
+    gap:4px !important;
+    overflow:hidden !important;
+    min-width:0 !important;
+  }
+
+  .race-mobile-order{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    flex:0 0 auto !important;
+    min-width:18px !important;
+    height:18px !important;
+    padding:0 4px !important;
+    border-radius:999px !important;
+    background:#333 !important;
+    color:#fff !important;
+    font-size:10px !important;
+    font-weight:bold !important;
+    line-height:1 !important;
+  }
+
+  .race-mobile-order-initial{
+    background:#777 !important;
+  }
+
+  .race-mobile-name{
+    display:block !important;
+    min-width:0 !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+    white-space:nowrap !important;
+    font-size:12px !important;
+    font-weight:bold !important;
+    line-height:1.25 !important;
+  }
+
+  .sh4-race-table .race-col-rank{
+    grid-area:rank;
+    display:block !important;
+    text-align:right !important;
+    font-weight:bold !important;
+  }
+
+  .sh4-race-table .race-col-popularity{
+    grid-area:pop;
+    display:block !important;
+    text-align:right !important;
+  }
+
+  .sh4-race-table .race-col-popularity::after{
+    content:"人";
+  }
+
+  .sh4-race-table .race-col-odds{
+    grid-area:odds;
+    display:block !important;
+    text-align:right !important;
+  }
+
+  .sh4-race-table .race-col-limit{
+    grid-area:limit;
+    display:block !important;
+    text-align:right !important;
+  }
+
+  .sh4-race-table .race-col-prize{
+    grid-area:prize;
+    display:block !important;
+    font-weight:bold !important;
+  }
+
+  .sh4-race-table .race-col-prize::after{
+    content:"枚";
+  }
+
+  .sh4-race-table .race-col-week{
+    grid-area:week;
+    display:block !important;
+  }
+
+  .sh4-race-table .race-col-week::before{
+    content:"残" !important;
+    display:inline !important;
+    color:#777 !important;
+    font-weight:normal !important;
+  }
+
+  .sh4-race-table .race-col-memo{
+    grid-area:memo;
+    display:block !important;
+    min-width:0 !important;
+    overflow:hidden !important;
+  }
+
+  .sh4-race-table .race-col-memo::before{
+    content:"メモ" !important;
+    display:inline !important;
+    color:#777 !important;
+    font-weight:normal !important;
+    margin-right:2px !important;
+  }
+
+  .sh4-race-table .sh4-memo-inline{
+    display:inline-flex !important;
+    align-items:center !important;
+    gap:2px !important;
+    width:auto !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    vertical-align:middle !important;
+  }
+
+  .sh4-race-table .sh4-memo-inline .sh4-memo-preview{
+    display:inline-block !important;
+    max-width:74px !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+    white-space:nowrap !important;
+  }
+
+  .sh4-race-table .sh4-memo-inline .sh4-memo-toggle{
+    width:17px !important;
+    height:17px !important;
+    line-height:17px !important;
+    padding:0 !important;
+    margin:0 !important;
+    font-size:10px !important;
+  }
+
+  .sh4-race-table .race-col-actions,
+  .sh4-race-table .race-col-delete{
+    grid-area:actions;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:3px !important;
+    white-space:nowrap !important;
+  }
+
+  .race-col-actions form{
+    margin:0 !important;
+  }
+
+  .race-col-actions .edit-btn,
+  .race-col-actions .delete-btn{
+    width:22px !important;
+    height:20px !important;
+    padding:0 !important;
+    border-radius:6px !important;
+    font-size:0 !important;
+    line-height:20px !important;
+    text-align:center !important;
+  }
+
+  .race-col-actions .edit-btn::before{
+    content:"✎";
+    font-size:12px !important;
+  }
+
+  .race-col-actions .delete-btn::before{
+    content:"×";
+    font-size:14px !important;
+    font-weight:bold !important;
+  }
+
+  .sh4-race-table tr.sh4-memo-detail-row,
+  .sh4-race-table tr.result-edit-row{
+    display:none !important;
+  }
+
+  .sh4-race-table tr.sh4-memo-detail-row.is-open,
+  .sh4-race-table tr.result-edit-row.is-open{
+    display:block !important;
+    width:100% !important;
+    margin:0 0 4px !important;
+  }
+
+  .sh4-race-table tr.sh4-memo-detail-row.is-open td,
+  .sh4-race-table tr.result-edit-row.is-open td{
+    display:block !important;
+    width:100% !important;
+    padding:6px !important;
+    border:1px solid #e5e5e5 !important;
+    white-space:normal !important;
+    background:#fafafa !important;
+  }
+
+  .result-edit-grid{
+    grid-template-columns:1fr 1fr !important;
+    gap:6px !important;
+  }
+
+  .result-edit-form{
+    padding:8px !important;
+  }
+
+  .result-edit-form input,
+  .result-edit-form select,
+  .result-edit-form textarea{
+    font-size:12px !important;
+    padding:6px !important;
+  }
+}
+
+/* =========================
+  出走履歴：スマホ超圧縮リスト 最終調整 20260606-130812
+  - 余白を削減
+  - 最新レースが大きい番号になる前提の表示
+  - メモ展開行を確実に表示
+========================= */
+
+@media screen and (max-width:768px){
+
+  .race-filter-tabs{
+    align-items:flex-start !important;
+    justify-content:flex-start !important;
+    margin:6px 0 8px !important;
+    gap:5px !important;
+  }
+
+  .race-filter-primary{
+    width:100% !important;
+    justify-content:flex-start !important;
+    text-align:left !important;
+  }
+
+  .race-filter-primary .race-filter-btn{
+    width:auto !important;
+    min-width:92px !important;
+    max-width:120px !important;
+    padding:5px 10px !important;
+    font-size:11px !important;
+  }
+
+  .race-filter-grade-grid{
+    width:100% !important;
+    display:grid !important;
+    grid-template-columns:repeat(3,1fr) !important;
+    gap:4px 6px !important;
+  }
+
+  .race-filter-grade-grid .race-filter-btn{
+    min-height:24px !important;
+    padding:4px 2px !important;
+    font-size:10px !important;
+    line-height:1.15 !important;
+  }
+
+  .race-table-wrap{
+    overflow:visible !important;
+    padding:0 !important;
+    margin-top:4px !important;
+  }
+
+  .race-table-wrap .sh4-race-table,
+  .sh4-race-table.race-history-table{
+    display:block !important;
+    width:100% !important;
+    min-width:0 !important;
+    max-width:100% !important;
+    background:#fff !important;
+  }
+
+  .sh4-race-table thead{
+    display:none !important;
+  }
+
+  .sh4-race-table tbody{
+    display:block !important;
+    width:100% !important;
+  }
+
+  .sh4-race-table tr.race-history-data-row{
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) auto auto auto auto auto !important;
+    grid-template-areas:
+      "name rank pop odds limit actions"
+      "prize week memo memo memo actions" !important;
+    align-items:center !important;
+    column-gap:4px !important;
+    row-gap:0 !important;
+    width:100% !important;
+    min-height:0 !important;
+    margin:0 !important;
+    padding:2px 0 !important;
+    border:0 !important;
+    border-bottom:1px solid #e9e9e9 !important;
+    border-radius:0 !important;
+    background:#fff !important;
+    box-shadow:none !important;
+  }
+
+  .sh4-race-table tr.race-history-data-row.is-filter-hidden{
+    display:none !important;
+  }
+
+  .sh4-race-table tr.race-history-data-row td{
+    display:block !important;
+    width:auto !important;
+    min-width:0 !important;
+    max-width:none !important;
+    padding:0 !important;
+    margin:0 !important;
+    border:0 !important;
+    background:transparent !important;
+    color:#222 !important;
+    font-size:10px !important;
+    line-height:1.15 !important;
+    white-space:nowrap !important;
+    text-align:left !important;
+    box-sizing:border-box !important;
+  }
+
+  .sh4-race-table tr.race-history-data-row td::before{
+    content:none !important;
+    display:none !important;
+  }
+
+  .sh4-race-table .race-col-name{
+    grid-area:name !important;
+    display:flex !important;
+    align-items:center !important;
+    gap:3px !important;
+    min-width:0 !important;
+    overflow:hidden !important;
+  }
+
+  .race-mobile-order{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    flex:0 0 auto !important;
+    min-width:15px !important;
+    height:15px !important;
+    padding:0 3px !important;
+    border-radius:999px !important;
+    background:#333 !important;
+    color:#fff !important;
+    font-size:9px !important;
+    font-weight:bold !important;
+    line-height:1 !important;
+  }
+
+  .race-mobile-order-initial{
+    background:#777 !important;
+  }
+
+  .race-mobile-name{
+    min-width:0 !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+    white-space:nowrap !important;
+    font-size:10.5px !important;
+    font-weight:bold !important;
+    line-height:1.15 !important;
+  }
+
+  .sh4-race-table .race-col-rank{
+    grid-area:rank !important;
+    text-align:right !important;
+    font-weight:bold !important;
+    font-size:10px !important;
+  }
+
+  .sh4-race-table .race-col-popularity{
+    grid-area:pop !important;
+    text-align:right !important;
+    font-size:10px !important;
+  }
+
+  .sh4-race-table .race-col-popularity::after{
+    content:"人" !important;
+  }
+
+  .sh4-race-table .race-col-odds{
+    grid-area:odds !important;
+    text-align:right !important;
+    font-size:10px !important;
+  }
+
+  .sh4-race-table .race-col-limit{
+    grid-area:limit !important;
+    text-align:right !important;
+    font-size:10px !important;
+    color:#555 !important;
+  }
+
+  .sh4-race-table .race-col-prize{
+    grid-area:prize !important;
+    font-weight:bold !important;
+    font-size:10px !important;
+  }
+
+  .sh4-race-table .race-col-prize::after{
+    content:"枚" !important;
+  }
+
+  .sh4-race-table .race-col-week{
+    grid-area:week !important;
+    font-size:10px !important;
+    color:#555 !important;
+  }
+
+  .sh4-race-table .race-col-week::before{
+    content:"残" !important;
+    display:inline !important;
+    color:#777 !important;
+    margin-right:1px !important;
+  }
+
+  .sh4-race-table .race-col-memo{
+    grid-area:memo !important;
+    min-width:0 !important;
+    overflow:hidden !important;
+    font-size:10px !important;
+    color:#555 !important;
+  }
+
+  .sh4-race-table .race-col-memo::before{
+    content:"メモ" !important;
+    display:inline !important;
+    color:#777 !important;
+    margin-right:1px !important;
+  }
+
+  .sh4-race-table .sh4-memo-inline{
+    display:inline-flex !important;
+    align-items:center !important;
+    gap:1px !important;
+    width:auto !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    vertical-align:middle !important;
+  }
+
+  .sh4-race-table .sh4-memo-preview{
+    display:inline-block !important;
+    max-width:48px !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+    white-space:nowrap !important;
+    vertical-align:middle !important;
+  }
+
+  .sh4-race-table .sh4-memo-toggle{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:15px !important;
+    height:15px !important;
+    min-width:15px !important;
+    padding:0 !important;
+    margin:0 !important;
+    border-radius:50% !important;
+    font-size:9px !important;
+    line-height:15px !important;
+    cursor:pointer !important;
+  }
+
+  .sh4-race-table .race-col-actions,
+  .sh4-race-table .race-col-delete{
+    grid-area:actions !important;
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:2px !important;
+    white-space:nowrap !important;
+  }
+
+  .race-col-actions form{
+    display:inline-flex !important;
+    margin:0 !important;
+    padding:0 !important;
+  }
+
+  .race-col-actions .edit-btn,
+  .race-col-actions .delete-btn{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:17px !important;
+    height:17px !important;
+    min-width:17px !important;
+    padding:0 !important;
+    border-radius:4px !important;
+    font-size:0 !important;
+    line-height:17px !important;
+  }
+
+  .race-col-actions .edit-btn::before{
+    content:"✎" !important;
+    font-size:10px !important;
+  }
+
+  .race-col-actions .delete-btn::before{
+    content:"×" !important;
+    font-size:12px !important;
+    font-weight:bold !important;
+  }
+
+  .sh4-race-table tr.sh4-memo-detail-row,
+  .sh4-race-table tr.result-edit-row{
+    display:none !important;
+  }
+
+  .sh4-race-table tr.sh4-memo-detail-row.is-open,
+  .sh4-race-table tr.result-edit-row.is-open{
+    display:block !important;
+    width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    border-bottom:1px solid #e9e9e9 !important;
+    background:#fafafa !important;
+  }
+
+  .sh4-race-table tr.sh4-memo-detail-row.is-open td,
+  .sh4-race-table tr.result-edit-row.is-open td{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    padding:4px 5px !important;
+    border:0 !important;
+    white-space:normal !important;
+    background:#fafafa !important;
+    box-sizing:border-box !important;
+  }
+
+  .sh4-memo-detail-box{
+    padding:5px !important;
+    border-radius:6px !important;
+  }
+
+  .sh4-memo-detail-title{
+    font-size:10px !important;
+    margin-bottom:2px !important;
+  }
+
+  .sh4-memo-detail-text{
+    font-size:11px !important;
+    line-height:1.45 !important;
+  }
+
+  .sh4-memo-close{
+    padding:2px 7px !important;
+    margin-top:4px !important;
+    font-size:10px !important;
+  }
+}
+
+
+/* =========================
+  SH4 generated 20260606-134845
+  出走履歴：スマホ 1行超コンパクトリスト最終調整
+========================= */
+
+@media screen and (max-width:768px){
+
+  /* フィルター：全レース左寄せ、グレード3列×2段 */
+  .race-filter-tabs{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+    gap:6px !important;
+    margin:6px 0 8px !important;
+  }
+
+  .race-filter-primary{
+    display:flex !important;
+    justify-content:flex-start !important;
+    width:100% !important;
+  }
+
+  .race-filter-primary .race-filter-btn{
+    width:auto !important;
+    min-width:94px !important;
+    max-width:none !important;
+    padding:6px 12px !important;
+    font-size:12px !important;
+    line-height:1.2 !important;
+  }
+
+  .race-filter-grade-grid{
+    display:grid !important;
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:5px !important;
+    width:100% !important;
+  }
+
+  .race-filter-grade-grid .race-filter-btn{
+    width:100% !important;
+    min-width:0 !important;
+    padding:5px 2px !important;
+    font-size:10.5px !important;
+    line-height:1.2 !important;
+    white-space:nowrap !important;
+  }
+
+  /* テーブルの横スクロールとヘッダーを完全停止 */
+  .race-table-wrap,
+  .table-wrap.race-table-wrap{
+    width:100% !important;
+    max-width:100% !important;
+    overflow:visible !important;
+    overflow-x:visible !important;
+    -webkit-overflow-scrolling:auto !important;
+  }
+
+  .race-table-wrap .sh4-race-table,
+  .race-table-wrap .sh4-race-table.race-history-table,
+  .sh4-race-table.race-history-table{
+    display:block !important;
+    width:100% !important;
+    min-width:0 !important;
+    max-width:100% !important;
+    table-layout:auto !important;
+    border-collapse:separate !important;
+    border-spacing:0 !important;
+    background:#fff !important;
+  }
+
+  .race-table-wrap .sh4-race-table thead,
+  .race-table-wrap .sh4-race-table thead tr,
+  .race-table-wrap .sh4-race-table thead th,
+  .sh4-race-table.race-history-table thead,
+  .sh4-race-table.race-history-table thead tr,
+  .sh4-race-table.race-history-table thead th{
+    display:none !important;
+    visibility:hidden !important;
+    height:0 !important;
+    max-height:0 !important;
+    padding:0 !important;
+    margin:0 !important;
+    border:0 !important;
+    overflow:hidden !important;
+  }
+
+  .race-table-wrap .sh4-race-table tbody,
+  .sh4-race-table.race-history-table tbody{
+    display:block !important;
+    width:100% !important;
+  }
+
+  /* 1レース＝1行。カード風の余白を廃止 */
+  .race-table-wrap .sh4-race-table tr.race-history-data-row,
+  .sh4-race-table.race-history-table tr.race-history-data-row{
+    display:grid !important;
+    grid-template-columns:minmax(88px,1fr) 24px 20px 30px 36px 45px 30px 20px 34px !important;
+    grid-template-areas:"name rank pop odds limit prize week memo actions" !important;
+    align-items:center !important;
+    column-gap:3px !important;
+    row-gap:0 !important;
+    width:100% !important;
+    margin:0 !important;
+    padding:3px 0 !important;
+    border:0 !important;
+    border-bottom:1px solid #e7e7e7 !important;
+    border-radius:0 !important;
+    background:#fff !important;
+    box-sizing:border-box !important;
+    min-height:24px !important;
+  }
+
+  .race-table-wrap .sh4-race-table tr.race-history-data-row.is-filter-hidden,
+  .sh4-race-table.race-history-table tr.race-history-data-row.is-filter-hidden,
+  .race-history-related-row.is-filter-hidden{
+    display:none !important;
+  }
+
+  .race-table-wrap .sh4-race-table tr.race-history-data-row td,
+  .sh4-race-table.race-history-table tr.race-history-data-row td{
+    display:block !important;
+    width:auto !important;
+    min-width:0 !important;
+    max-width:none !important;
+    padding:0 !important;
+    margin:0 !important;
+    border:0 !important;
+    background:transparent !important;
+    color:#222 !important;
+    font-size:9.5px !important;
+    line-height:1.15 !important;
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+    text-align:left !important;
+    box-sizing:border-box !important;
+  }
+
+  .race-table-wrap .sh4-race-table tr.race-history-data-row td::before,
+  .sh4-race-table.race-history-table tr.race-history-data-row td::before{
+    content:none !important;
+    display:none !important;
+  }
+
+  .sh4-race-table .race-col-name{
+    grid-area:name !important;
+    display:flex !important;
+    align-items:center !important;
+    gap:3px !important;
+    font-weight:bold !important;
+  }
+
+  .race-mobile-order{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    flex:0 0 auto !important;
+    min-width:14px !important;
+    height:14px !important;
+    padding:0 3px !important;
+    border-radius:999px !important;
+    background:#333 !important;
+    color:#fff !important;
+    font-size:8.5px !important;
+    font-weight:bold !important;
+    line-height:1 !important;
+  }
+
+  .race-mobile-order-initial{
+    background:#777 !important;
+  }
+
+  .race-mobile-name{
+    display:block !important;
+    min-width:0 !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+    white-space:nowrap !important;
+    font-size:10px !important;
+    font-weight:bold !important;
+    line-height:1.15 !important;
+  }
+
+  .sh4-race-table .race-col-rank{
+    grid-area:rank !important;
+    text-align:right !important;
+    font-weight:bold !important;
+  }
+
+  .sh4-race-table .race-col-popularity{
+    grid-area:pop !important;
+    text-align:right !important;
+  }
+
+  .sh4-race-table .race-col-popularity::after{
+    content:"人" !important;
+  }
+
+  .sh4-race-table .race-col-odds{
+    grid-area:odds !important;
+    text-align:right !important;
+  }
+
+  .sh4-race-table .race-col-limit{
+    grid-area:limit !important;
+    text-align:right !important;
+    color:#666 !important;
+  }
+
+  .sh4-race-table .race-col-prize{
+    grid-area:prize !important;
+    text-align:right !important;
+    font-weight:bold !important;
+  }
+
+  .sh4-race-table .race-col-prize::after{
+    content:"枚" !important;
+    font-weight:bold !important;
+  }
+
+  .sh4-race-table .race-col-week{
+    grid-area:week !important;
+    text-align:right !important;
+    color:#555 !important;
+  }
+
+  .sh4-race-table .race-col-week::before{
+    content:"残" !important;
+    color:#777 !important;
+    margin-right:1px !important;
+  }
+
+  .sh4-race-table .race-col-memo{
+    grid-area:memo !important;
+    text-align:center !important;
+    color:#555 !important;
+  }
+
+  .sh4-race-table .sh4-memo-inline{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:100% !important;
+    min-width:0 !important;
+    gap:0 !important;
+  }
+
+  .sh4-race-table .sh4-memo-preview{
+    display:none !important;
+  }
+
+  .sh4-race-table .sh4-memo-toggle{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:16px !important;
+    height:16px !important;
+    min-width:16px !important;
+    padding:0 !important;
+    margin:0 !important;
+    border-radius:50% !important;
+    font-size:10px !important;
+    line-height:16px !important;
+    cursor:pointer !important;
+  }
+
+  .sh4-race-table .race-col-actions,
+  .sh4-race-table .race-col-delete{
+    grid-area:actions !important;
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:2px !important;
+    overflow:visible !important;
+  }
+
+  .race-col-actions form{
+    display:inline-flex !important;
+    margin:0 !important;
+    padding:0 !important;
+  }
+
+  .race-col-actions .edit-btn,
+  .race-col-actions .delete-btn{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:15px !important;
+    height:15px !important;
+    min-width:15px !important;
+    padding:0 !important;
+    border-radius:4px !important;
+    font-size:0 !important;
+    line-height:15px !important;
+  }
+
+  .race-col-actions .edit-btn::before{
+    content:"✎" !important;
+    font-size:9px !important;
+  }
+
+  .race-col-actions .delete-btn::before{
+    content:"×" !important;
+    font-size:11px !important;
+    font-weight:bold !important;
+  }
+
+  /* メモ全文・編集フォームは行下にだけ展開 */
+  .sh4-race-table tr.sh4-memo-detail-row,
+  .sh4-race-table tr.result-edit-row{
+    display:none !important;
+  }
+
+  .sh4-race-table tr.sh4-memo-detail-row.is-open,
+  .sh4-race-table tr.result-edit-row.is-open{
+    display:block !important;
+    width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    border-bottom:1px solid #e7e7e7 !important;
+    background:#fafafa !important;
+  }
+
+  .sh4-race-table tr.sh4-memo-detail-row.is-open td,
+  .sh4-race-table tr.result-edit-row.is-open td{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    padding:5px 6px !important;
+    border:0 !important;
+    white-space:normal !important;
+    background:#fafafa !important;
+    box-sizing:border-box !important;
+  }
+
+  .sh4-memo-detail-box{
+    padding:6px !important;
+    border-radius:6px !important;
+  }
+
+  .sh4-memo-detail-title{
+    font-size:10px !important;
+    margin-bottom:2px !important;
+  }
+
+  .sh4-memo-detail-text{
+    font-size:11px !important;
+    line-height:1.45 !important;
+  }
+
+  .sh4-memo-close{
+    padding:2px 7px !important;
+    margin-top:4px !important;
+    font-size:10px !important;
+  }
+}
